@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - uApply.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-dark sticky-top shadow">
+              <div class="container">
+                <a class="navbar-brand text-white" asp-area="Home" asp-controller="Home" asp-action="Index">
+                  <i class="icon ion-md-aperture"></i> uApply 
+                </a>
+   
+                <ul class="nav justify-content-end">
+                    <li>
+                        <a class="nav-link text-white nav-link-hover mr-2 selected" asp-area="Home" asp-controller="Home" asp-action="Index">
+                          <i class="icon ion-md-home mr-2"></i>Home
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white nav-link-hover mr-2">
+                          <i class="icon ion-md-compass mr-2"></i>  About us
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white nav-link-hover mr-2">
+                          <i class="icon ion-md-log-in mr-2"></i>Login
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link btn btn-primary">
+                          <i class="icon ion-md-book mr-2"></i>Sign-up
+                        </a>
+                    </li>
+                </ul>
+ 
+              </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - uApply.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -15,6 +15,9 @@ namespace uApply.DAL
 
         }
 
+        public DbSet<Parent> Parents { get; set; }
+        public DbSet<Learner> Learners { get; set; }
+        public DbSet<Grade> Grades { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolLevel> SchoolLevels { get; set; }
         public DbSet<Town> Towns { get; set; }

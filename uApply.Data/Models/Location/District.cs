@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uApply.Data.Models
+namespace uApply.Data.Models.Location
 {
     public class District
     {

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using uApply.Data.Models;
+using uApply.Data.Models.Education;
+using uApply.Data.Models.Location;
+
 
 namespace uApply.DAL
 {
@@ -23,6 +26,8 @@ namespace uApply.DAL
         public DbSet<Town> Towns { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Province> Provinces { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Gender> Genders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

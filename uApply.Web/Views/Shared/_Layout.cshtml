@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
 </head>
 <body>
@@ -19,16 +22,22 @@
    
                 <ul class="nav justify-content-end">
                     <li>
-                        <a class="nav-link text-white nav-link-hover mr-2 selected" asp-area="Home" asp-controller="Home" asp-action="Index">
+                        <a class="nav-link text-white nav-link-hover mr-2" asp-area="Home" asp-controller="Home" asp-action="Index">
                           <i class="icon ion-md-home mr-2"></i>Home
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link text-white nav-link-hover mr-2">
-                          <i class="icon ion-md-compass mr-2"></i>  About us
+                        <a class="nav-link text-white nav-link-hover mr-2" asp-area="User" asp-controller="Parent" asp-action="Index">
+                          <i class="icon ion-md-people mr-2"></i>  Parents
                         </a>
                     </li>
                     <li>
+                        <a class="nav-link text-white nav-link-hover mr-2" asp-area="School" asp-controller="School" asp-action="Index">
+                          <i class="icon ion-md-school mr-2"></i>  Schools
+                        </a>
+                    </li>
+
+                    @*<li>
                         <a class="nav-link text-white nav-link-hover mr-2">
                           <i class="icon ion-md-log-in mr-2"></i>Login
                         </a>
@@ -37,7 +46,7 @@
                         <a class="nav-link btn btn-primary">
                           <i class="icon ion-md-book mr-2"></i>Sign-up
                         </a>
-                    </li>
+                    </li>*@
                 </ul>
  
               </div>
@@ -57,6 +66,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

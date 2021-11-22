@@ -3,7 +3,7 @@
 namespace uApply.Web.Areas.User.Controllers
 {
     [Area("User")]
-    public class ProfileController : Controller
+    public class ParentController : Controller
     {
         public IActionResult Index()
         {

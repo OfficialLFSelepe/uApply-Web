@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uApply.Data.Models
+namespace uApply.Data.Models.Education
 {
     public class School
     {
@@ -19,5 +19,7 @@ namespace uApply.Data.Models
         [ForeignKey("TownId")]
         public int TownId { get; set; }
         public Town Town { get; set; }
+
+        public IEnumerable<Application> Applications { get; set; }
     }
 }

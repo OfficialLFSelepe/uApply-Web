@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using uApply.Data.Models;
+using uApply.Data.Models.Education;
+using uApply.Data.Models.Location;
+
 
 namespace uApply.DAL
 {
@@ -16,11 +19,16 @@ namespace uApply.DAL
 
         }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Parent> Parents { get; set; }
+        public DbSet<Learner> Learners { get; set; }
+        public DbSet<Grade> Grades { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolLevel> SchoolLevels { get; set; }
         public DbSet<Town> Towns { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Province> Provinces { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Gender> Genders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,13 @@ using uApply.Data.Models;
 
 namespace uApply.DAL
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
 
         }
-
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<SchoolLevel> SchoolLevels { get; set; }
         public DbSet<Town> Towns { get; set; }

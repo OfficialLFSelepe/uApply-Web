@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using uApply.Data.Models.Location;
 
 namespace uApply.Data.Models
 {
@@ -13,28 +14,49 @@ namespace uApply.Data.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public int Surname { get; set; }        
-        public int Nationality { get; set; }
-        public int Race { get; set; }
-        [Display(Name ="Home Language")]
-        public int HomeLanguage { get; set; }
-        [Display(Name = "Phone number")]
-        public int PhoneNumber { get; set; }
-        public int Email { get; set; }
+        public string FullNames { get; set; }
+        public string Surname { get; set; }
+        public long IdNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
+
+        public string StreetAddress { get; set; }
+        public string Surburb { get; set; }
+        public int PostalCode { get; set; }
+
+        [ForeignKey("TownId")]
+        public int TownId { get; set; }
+        public Town Town { get; set; }
 
 
         //FOREIGN KEYS
         [ForeignKey("TitleId")]
-        public int Title { get; set; }
+        public int TitleId { get; set; }
+        public Title Title { get; set; }
+
         [ForeignKey("GenderId")]
-        public int Gender { get; set; }
+        public int GenderId { get; set; }
+        public Gender Gender { get; set; }
 
-        //NAVIGATION PROPERTIES
-        //public Title Title { get; set; }
-        //public Gender Gender { get; set; }
+        [ForeignKey("NationalityId")]
+        public int NationalityId { get; set; }
+        public Nationality Nationality { get; set; }
 
-        public IEnumerable<Title> Titles { get; set; }
-        public IEnumerable<Gender> Genders { get; set; }
+
+        [ForeignKey("RaceId")]
+        public int RaceId { get; set; }
+        public Race Race { get; set; }
+
+
+        [ForeignKey("LanguageId")]//HL
+        public int LanguageId { get; set; }
+
+        [Display(Name = "Home Langnuage")]
+        public Language Language { get; set; }
+
+
+        
+
     }
 }

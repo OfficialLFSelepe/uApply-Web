@@ -9,18 +9,17 @@ using uApply.Data.Models;
 
 namespace uApply.Data.Models
 {
-    public class Learner
+    public class Learner : User
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public long IdNumber { get; set; }
         public bool IsDisabled { get; set; }
 
         [ForeignKey("GradeId")]
         public int GradeId { get; set; }
         public Grade Grade { get; set; }
 
-        public Parent Parent{ get; set; }
+        //[ForeignKey("ParentId")]
+        //public int ParentId { get; set; }
+        //public Parent Parent{ get; set; }
 
     }
 }

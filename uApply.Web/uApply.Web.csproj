@@ -21,8 +21,4 @@
     <ProjectReference Include="..\uApply.Utils\uApply.Utils.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\" />
-  </ItemGroup>
-
 </Project>

@@ -9,6 +9,13 @@ namespace uApply.DAL.Repository.IRepository
     public interface IUnitOfWork : IDisposable
     {
         IDistrictRepository District { get; }
+        IParentRepository Parent { get; }
+        ITitleRepository Title { get; }
+        IGenderRepository Gender { get; }
+        IRaceRepository Race { get; }
+        INationalityRepository Nationality { get; }
+        ILanguageRepository Language { get; }
+
         void Save();
     }
 }

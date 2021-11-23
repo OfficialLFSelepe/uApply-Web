@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using uApply.DAL.Repository.IRepository;
+using uApply.Data.Models;
 
 namespace uApply.DAL.Repository
 {
@@ -15,9 +16,27 @@ namespace uApply.DAL.Repository
         {
             this.db = db;
             District = new DistrictRepository(db);
+            Parent = new ParentRepository(db);
+            Title = new TitleRepository(db);
+            Gender = new GenderRepository(db);
+            Race = new RaceRepository(db);
+            Nationality = new NationalityRepository(db);
+            Language = new LanguageRepository(db);
         }
 
         public IDistrictRepository District { get; private set; }
+
+        public IParentRepository Parent { get; private set; }
+
+        public ITitleRepository Title { get; private set; }
+
+        public IGenderRepository Gender { get; private set; }
+
+        public IRaceRepository Race { get; private set; }
+
+        public INationalityRepository Nationality { get; private set; }
+
+        public ILanguageRepository Language { get; private set; }
 
         public void Dispose()
         {

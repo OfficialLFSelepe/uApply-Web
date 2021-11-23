@@ -8,13 +8,15 @@ using uApply.Data.Models.Location;
 
 namespace uApply.Data.Models.Location
 {
-    public class Town
+    public class Address
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string StreetAddress { get; set; }
+        public string Surburb { get; set; }
+        public int PostalCode { get; set; }
 
-        [ForeignKey("DistrictId")]
-        public int DistrictId { get; set; }
-        public District District { get; set; }
+        [ForeignKey("TownId")]
+        public int TownId { get; set; }
+        public Town Town { get; set; }
     }
-} 
+}

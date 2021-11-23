@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace uApply.Data.Models
 {
-    public class Parent : User
+    public class Nationality
     {
-        //public IEnumerable<Learner>? Learners { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }    
     }
 }

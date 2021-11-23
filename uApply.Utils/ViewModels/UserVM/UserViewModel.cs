@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uApply.Data.Models
+namespace uApply.Utils.ViewModels.UserVM
 {
-    public class Parent : User
+    public class UserViewModel
     {
-        //public IEnumerable<Learner>? Learners { get; set; }
     }
 }

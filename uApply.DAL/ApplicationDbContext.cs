@@ -29,10 +29,23 @@ namespace uApply.DAL
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<Gender> Genders { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Nationality> Nationalities { get; set; }
+        public DbSet<Race> Races { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.Entity<Parent>()
+            //.HasRequired(c => c.Parent)
+            //.WithMany()
+            //.WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Learner>()
+            //    .HasRequired(s => s.Learner)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Province>().HasData(new Province()
             {
@@ -46,14 +59,14 @@ namespace uApply.DAL
                 Name = "Mangaung",
                 ProvinceId = 1
             });
-            
+
             modelBuilder.Entity<District>().HasData(new District()
             {
                 Id = 2,
                 Name = "Lejweleputswa",
                 ProvinceId = 1
             });
-            
+
             modelBuilder.Entity<District>().HasData(new District()
             {
                 Id = 3,
@@ -61,6 +74,192 @@ namespace uApply.DAL
                 ProvinceId = 1
             });
 
+            //Town 2 per District
+            modelBuilder.Entity<Town>().HasData(new Town()
+            {
+                Id = 1,
+                Name = "Bloem",
+                DistrictId = 1
+            });
+            modelBuilder.Entity<Town>().HasData(new Town()
+            {
+                Id = 2,
+                Name = "Botshabelo",
+                DistrictId = 1
+
+            });
+            modelBuilder.Entity<Town>().HasData(new Town()
+            {
+                Id = 3,
+                Name = "phuthaditjhaba",
+                DistrictId = 2
+
+            });
+            modelBuilder.Entity<Town>().HasData(new Town()
+            {
+                Id = 4,
+                Name = "betlehem",
+                DistrictId = 2
+
+            });
+            modelBuilder.Entity<Town>().HasData(new Town()
+            {
+                Id = 5,
+                Name = "Frankfort",
+                DistrictId = 3
+
+            });
+            modelBuilder.Entity<Town>().HasData(new Town()
+            {
+                Id = 6,
+                Name = "Ficksburg",
+                DistrictId = 3
+
+            });
+
+            //Nationlity - RSA And Other
+            modelBuilder.Entity<Nationality>().HasData(new Nationality()
+            {
+                Id=1,
+                Name="South Africa"
+            });
+            modelBuilder.Entity<Nationality>().HasData(new Nationality()
+            {
+                Id=2,
+                Name="Other"
+            });
+
+            //Language  - 3
+            modelBuilder.Entity<Language>().HasData(new Language()
+            {
+                Id=1,
+                Name ="English"
+            });
+            modelBuilder.Entity<Language>().HasData(new Language()
+            {
+                Id=2,
+                Name ="Sesotho"
+            });
+            modelBuilder.Entity<Language>().HasData(new Language()
+            {
+                Id=3,
+                Name ="isiXhosa"
+            });
+
+            // Race
+            modelBuilder.Entity<Race>().HasData(new Race()
+            {
+                Id = 1,
+                Name = "African"
+            });
+            modelBuilder.Entity<Race>().HasData(new Race()
+            {
+                Id = 2,
+                Name = "White"
+            });
+
+            //Titles
+            modelBuilder.Entity<Title>().HasData(new Title()
+            {
+                Id = 1,
+                Name = "Mr"
+            });
+            modelBuilder.Entity<Title>().HasData(new Title()
+            {
+                Id = 2,
+                Name = "Miss"
+            });
+            modelBuilder.Entity<Title>().HasData(new Title()
+            {
+                Id = 3,
+                Name = "Mrs"
+            });
+            modelBuilder.Entity<Title>().HasData(new Title()
+            {
+                Id = 4,
+                Name = "Dr"
+            });
+
+            //Gender
+            modelBuilder.Entity<Gender>().HasData(new Gender()
+            {
+                Id = 1,
+                Name = "Male"
+            });
+            modelBuilder.Entity<Gender>().HasData(new Gender()
+            {
+                Id = 2,
+                Name = "Female"
+            });
+
+            modelBuilder.Entity<Grade>().HasData(new Grade()
+            {
+                Id = 1,
+                Name = "8"
+            });
+            modelBuilder.Entity<Grade>().HasData(new Grade()
+            {
+                Id = 2,
+                Name = "9"
+            });
+            modelBuilder.Entity<Grade>().HasData(new Grade()
+            {
+                Id = 3,
+                Name = "10"
+            });
+            modelBuilder.Entity<Grade>().HasData(new Grade()
+            {
+                Id = 4,
+                Name = "11"
+            });
+             modelBuilder.Entity<Grade>().HasData(new Grade()
+            {
+                Id = 5,
+                Name = "12"
+            });
+
+            //Parent
+            modelBuilder.Entity<Parent>().HasData(new Parent()
+            {
+                Id = 1,
+                FullNames ="lesetja Frans",
+                Surname ="Selepe",
+                IdNumber = 0003265453088,
+                PhoneNumber ="0636517935",
+                Email ="lesetjaofficial26@gmail.com",
+                Password ="@Sijo4C#",
+                StreetAddress ="10360 Poulos Village",
+                Surburb ="Bakenberg",
+                PostalCode =0611,
+                TownId = 1,
+                TitleId = 1,
+                GenderId = 1,
+                NationalityId = 1,
+                RaceId = 1,
+                LanguageId = 2                
+            });
+
+            //Learner
+            modelBuilder.Entity<Learner>().HasData(new Learner()
+            {
+                Id = 1,
+                FullNames = "Sne Maxwell",
+                Surname = "Selepe",
+                IdNumber = 9802356508984,
+                PhoneNumber = "0645698789",
+                Email = "maxvitsha@gmail.com",
+                Password = "@Sijo4C#",
+                StreetAddress = "10360 Poulos Village",
+                Surburb = "Bakenberg",
+                PostalCode = 0611,
+                TownId = 1,
+                TitleId = 1,
+                GenderId = 1,
+                NationalityId = 1,
+                RaceId = 1,
+                LanguageId = 2,
+                GradeId = 1
+            });
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using uApply.DAL;
 
 namespace uApply.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211122220302_UpdateDbSets")]
+    partial class UpdateDbSets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,7 +319,7 @@ namespace uApply.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("GenderType")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -328,12 +330,12 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Male"
+                            GenderType = "Male"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Female"
+                            GenderType = "Female"
                         });
                 });
 

@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace uApply.Web.Areas.School.Controllers
+namespace uApply.Web.Areas.Admin.Controllers
 {
     public class SchoolController : Controller
     {
-        [Area("School")]
         public IActionResult Index()
         {
             return View();

@@ -140,7 +140,7 @@ namespace uApply.Web.Areas.User.Controllers
 
             parentVM.Parent = parentFromDb;
 
-            var learners = unitOfWork.Learner.GetAll(l => l.Id == parentFromDb.Id);
+            var learners = unitOfWork.Learner.GetAll(l => l.ParentId == parentFromDb.Id);
 
             if (!learners.Any()) return View(parentVM);
 

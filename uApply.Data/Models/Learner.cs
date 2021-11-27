@@ -17,9 +17,9 @@ namespace uApply.Data.Models
         public int GradeId { get; set; }
         public Grade Grade { get; set; }
 
-        //[ForeignKey("ParentId")]
-        //public int ParentId { get; set; }
-        //public Parent Parent{ get; set; }
+        [ForeignKey("ParentId")]
+        public int ParentId { get; set; }
+        public Parent Parent { get; set; }
 
     }
 }

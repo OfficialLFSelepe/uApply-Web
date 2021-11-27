@@ -16,5 +16,6 @@ namespace uApply.Utils.ViewModels.UserVM
         public IEnumerable<SelectListItem> Races { get; set; }
         public IEnumerable<SelectListItem> Nationalities { get; set; }
         public IEnumerable<SelectListItem> Languages { get; set; }
+        public IEnumerable<Learner> Learners { get; set; }
     }
 }

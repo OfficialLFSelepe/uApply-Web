@@ -1,23 +1,22 @@
 ﻿var dataTable;
 
 $(document).ready(() => {
-    var parentId = Number(document.getElementById('parentTable').getAttribute('data-parent-id'));
+    var parentId = Number(document.getElementById('learnerTable').getAttribute('data-parent-id'));
     loadTableData(parentId);
 });
 
 var loadTableData = (parentId) => {
 
-    dataTable = $("#parentTable").DataTable({
+    dataTable = $("#learnerTable").DataTable({
         "ajax": {
-            "url": `/User/Parent/Get/${parentId}`,
-            "type": "GET"
+            "url": `/User/Parent/Learners/${parentId}`
         },
         "columns": [
             { "data": "fullNames", "width": "15%" },
             { "data": "surname", "width": "15%" },
             { "data": "idNumber", "width": "15%" },
-            { "data": "phoneNumber", "width": "15%" },
-            { "data": "Nationality", "width": "15%" },
+            { "data": "isDisabled", "width": "15%" },
+            { "data": "grade", "width": "15%" },
             {
                 "data": "id",
                 "render": (data) => {

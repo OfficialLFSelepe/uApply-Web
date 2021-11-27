@@ -25,7 +25,7 @@ namespace uApply.Web.Areas.User.Controllers
 
         public IActionResult Upsert(int? id)
         {
-        
+
 
             ParentViewModel parentViewModel = new ParentViewModel()
             {
@@ -59,7 +59,7 @@ namespace uApply.Web.Areas.User.Controllers
             };
 
 
-            if(id == null) return View(parentViewModel);
+            if (id == null) return View(parentViewModel);
 
             parentViewModel.Parent = unitOfWork.Parent.Get(id.GetValueOrDefault());
 
@@ -132,6 +132,22 @@ namespace uApply.Web.Areas.User.Controllers
             return View(parentViewModel);
         }
 
+        public IActionResult Profile(int id)
+        {
+            var parentVM = new ParentViewModel();
+            
+            var parentFromDb = unitOfWork.Parent.Get(id);
+
+            parentVM.Parent = parentFromDb;
+
+            var learners = unitOfWork.Learner.GetAll(l => l.Id == parentFromDb.Id);
+
+            if (!learners.Any()) return View(parentVM);
+
+            parentVM.Learners = learners;
+            
+            return View(parentVM);
+        }
 
 
         #region API Calls
@@ -140,10 +156,29 @@ namespace uApply.Web.Areas.User.Controllers
         {
             var parents = unitOfWork.Parent.GetAll();
 
-            if(parents == null) return Json(new { success = false, message = "Erro while fetching data...." });
+            if (parents == null) return Json(new { success = false, message = "Erro while fetching data...." });
 
-            return Json(new {data = parents});
+            return Json(new { data = parents });
         }
+
+        //[HttpGet("{id:int}")]
+        //public IActionResult GetParent(int id)
+        //{
+        //    var parent = unitOfWork.Parent.Get(id);
+
+        //    return Json(new { data = parent});
+        //}
+
+        //[HttpGet("{parentId:int}")]
+        //public IActionResult Learners(int parentId)
+        //{
+        //    var learners = unitOfWork.Learner.GetAll(l => l.ParentId == parentId);
+
+        //    if (learners == null) return Json(new { success = false, message = "Erro while fetching data...." });
+
+        //    return Json(new { data = learners });
+        //}
+
 
         #endregion
 

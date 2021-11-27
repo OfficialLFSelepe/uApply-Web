@@ -17,7 +17,10 @@ namespace uApply.Data.Models.Education
         public int SchoolId { get; set; }
         public School School { get; set; }
 
+        public int LearnerId { get; set; }
+        public Learner Learner { get; set; }
         //Notify on status change --- > SMS
+
 
     }
 }

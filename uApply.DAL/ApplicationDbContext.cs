@@ -37,15 +37,10 @@ namespace uApply.DAL
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Parent>()
-            //.HasRequired(c => c.Parent)
-            //.WithMany()
-            //.WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<Learner>()
-            //    .HasRequired(s => s.Learner)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(false);
+            foreach(var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
             modelBuilder.Entity<Province>().HasData(new Province()
             {
@@ -243,6 +238,7 @@ namespace uApply.DAL
             modelBuilder.Entity<Learner>().HasData(new Learner()
             {
                 Id = 1,
+                ParentId = 1,
                 FullNames = "Sne Maxwell",
                 Surname = "Selepe",
                 IdNumber = 9802356508984,

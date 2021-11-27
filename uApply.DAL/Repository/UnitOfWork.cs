@@ -22,6 +22,7 @@ namespace uApply.DAL.Repository
             Race = new RaceRepository(db);
             Nationality = new NationalityRepository(db);
             Language = new LanguageRepository(db);
+            Learner = new LearnerRepository(db);
         }
 
         public IDistrictRepository District { get; private set; }
@@ -37,6 +38,8 @@ namespace uApply.DAL.Repository
         public INationalityRepository Nationality { get; private set; }
 
         public ILanguageRepository Language { get; private set; }
+
+        public ILearnerRepository Learner { get; private set; }
 
         public void Dispose()
         {

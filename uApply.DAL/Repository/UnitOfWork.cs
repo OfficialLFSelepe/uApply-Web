@@ -24,7 +24,10 @@ namespace uApply.DAL.Repository
             Language = new LanguageRepository(db);
             Town = new TownRepository(db);
             School = new SchoolRepository(db);
+<<<<<<< HEAD
             SchoolLevel = new SchoolLevelRepository(db);
+=======
+>>>>>>> b43d71a4c0e3d1be174c5f6eb2460e6c38c38c77
         }
 
         public IDistrictRepository District { get; private set; }

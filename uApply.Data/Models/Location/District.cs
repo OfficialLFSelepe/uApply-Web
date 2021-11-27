@@ -16,5 +16,6 @@ namespace uApply.Data.Models.Location
         [ForeignKey("ProvinceId")]
         public int ProvinceId { get; set; }
         public Province Province { get; set; }
+                
     }
 }

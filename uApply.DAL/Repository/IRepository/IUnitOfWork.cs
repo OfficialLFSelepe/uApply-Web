@@ -16,6 +16,10 @@ namespace uApply.DAL.Repository.IRepository
         INationalityRepository Nationality { get; }
         ILanguageRepository Language { get; }
         ILearnerRepository Learner { get; }
+        ITownRepository Town { get; }
+        ISchoolRepository School { get; }
+        ISchoolLevelRepository SchoolLevel { get; }
+        IGradeRepository Grade { get; }
 
         
         void Save();

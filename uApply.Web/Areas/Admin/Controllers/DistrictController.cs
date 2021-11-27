@@ -60,7 +60,7 @@ namespace uApply.Web.Areas.Admin.Controllers
                 unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
             }
-            
+
             return View(district);
         }
 

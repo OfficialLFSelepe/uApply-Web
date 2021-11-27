@@ -23,6 +23,9 @@ namespace uApply.DAL.Repository
             Nationality = new NationalityRepository(db);
             Language = new LanguageRepository(db);
             Learner = new LearnerRepository(db);
+            Town = new TownRepository(db);
+            School = new SchoolRepository(db);
+            SchoolLevel = new SchoolLevelRepository(db);
         }
 
         public IDistrictRepository District { get; private set; }
@@ -40,6 +43,14 @@ namespace uApply.DAL.Repository
         public ILanguageRepository Language { get; private set; }
 
         public ILearnerRepository Learner { get; private set; }
+        
+        public ITownRepository Town { get; private set; }
+
+        public ISchoolRepository School { get; private set; }
+
+        public ISchoolLevelRepository SchoolLevel { get; private set; }
+
+        public IGradeRepository Grade { get; private set; }
 
         public void Dispose()
         {

@@ -19,7 +19,22 @@ namespace uApply.DAL.Repository
 
         public void Update(Learner learner)
         {
-            throw new NotImplementedException();
+            var learnerFromDb = db.Learners.FirstOrDefault(c => c.Id == learner.Id);
+
+            if (learnerFromDb != null)
+            {
+                learnerFromDb.FullNames = learner.FullNames;
+                learnerFromDb.Surname = learner.Surname;
+                learnerFromDb.TitleId = learner.TitleId;
+                learnerFromDb.GenderId = learner.GenderId;
+                learnerFromDb.RaceId = learner.RaceId;
+                learnerFromDb.IdNumber = learner.IdNumber;
+                learnerFromDb.PhoneNumber = learner.PhoneNumber;                
+                learnerFromDb.NationalityId = learner.NationalityId;
+                learnerFromDb.LanguageId = learner.LanguageId;
+                learnerFromDb.IsDisabled = learner.IsDisabled;
+
+            }
         }
     }
 }

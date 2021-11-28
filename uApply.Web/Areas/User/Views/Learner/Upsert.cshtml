@@ -1,25 +1,29 @@
-﻿@model uApply.Utils.ViewModels.UserVM.ParentViewModel
+﻿@model LearnerViewModel
 @{
-    var title = Model.Parent.Id == 0 ? "Register" : "Update";
+    var title = Model.Learner.Id == 0 ? "Adding Learner" : "Updating Learner";
 }
+
+
+ <h3 class="align-content-center text-dark">@title</h3>
 
  <div class="container">
 
          <div class="card shadow my-3">
             <div class="card-header py-3">
-                <p class="text-center text-dark m-0 font-weight-bold">User Registration</p>
+                <p class="text-center text-dark m-0 font-weight-bold">@title</p>
             </div>
             <form  method="post">
                 <div class="card-body">
-                    <input type="hidden" asp-for="Parent.Id"  />     
-
-                    <h4 class="text-info text-center text-uppercase mb-3">Personal Details</h4>
+                    <input type="hidden" asp-for="Learner.Id"  />     
+                    <input type="hidden" asp-for="Learner.ParentId"  />     
+        
+                    <h4 class="text-dark text-center text-uppercase mb-3">Personal Details</h4>
                                 
                     <div class="form-row">
                         <div class="col">
                             <div class="form-group">
-                                <label asp-for="Parent.FullNames" class="text-muted"></label>
-                                <input  asp-for="Parent.FullNames" type="text" class="form-control" />     
+                                <label asp-for="Learner.FullNames" class="text-muted"></label>
+                                <input  asp-for="Learner.FullNames" type="text" class="form-control" />     
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -27,16 +31,16 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label asp-for="Parent.Surname" class="text-muted"></label>
-                                <input asp-for="Parent.Surname" type="text" class="form-control" />
+                                <label asp-for="Learner.Surname" class="text-muted"></label>
+                                <input asp-for="Learner.Surname" type="text" class="form-control" />
                             </div>
                         </div>
                     </div>                   
                     <div class="form-row">
                         <div class="col-3">
                             <div class="form-group">
-                                <label asp-for="Parent.Title" class="text-muted"></label>
-                                  @Html.DropDownListFor( c => c.Parent.TitleId, Model.Titles, "-- Select Title --",
+                                <label asp-for="Learner.Title" class="text-muted"></label>
+                                  @Html.DropDownListFor( c => c.Learner.TitleId, Model.Titles, "-- Select Title --",
                                     new {@class = "form-control"})
                                 
                             </div>
@@ -46,15 +50,15 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label asp-for="Parent.Gender" class="text-muted"></label>
-                                @Html.DropDownListFor( c => c.Parent.GenderId, Model.Genders, "-- Select Gender --",
+                                <label asp-for="Learner.Gender" class="text-muted"></label>
+                                @Html.DropDownListFor( c => c.Learner.GenderId, Model.Genders, "-- Select Gender --",
                                     new {@class = "form-control"})
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label asp-for="Parent.Nationality" class="text-muted"></label>                                
-                                @Html.DropDownListFor( c => c.Parent.NationalityId, Model.Nationalities, "-- Select Nationality --",
+                                <label asp-for="Learner.Nationality" class="text-muted"></label>                                
+                                @Html.DropDownListFor( c => c.Learner.NationalityId, Model.Nationalities, "-- Select Nationality --",
                                     new {@class = "form-control"})
 
                             </div>
@@ -66,14 +70,23 @@
                     <div class="form-row">
                         <div class="col">
                             <div class="form-group">
-                                <label asp-for="Parent.IdNumber" class="text-muted"></label>
-                                <input asp-for="Parent.IdNumber" type="text" class="form-control" />        
+                                <label asp-for="Learner.IdNumber" class="text-muted"></label>
+                                <input asp-for="Learner.IdNumber" type="text" class="form-control" />        
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Learner.Language" class="text-muted"></label>
+                                
+                                @Html.DropDownListFor( c => c.Learner.LanguageId, Model.Languages, "-- Select Home Language --",
+                                    new {@class = "form-control"})
+        
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label asp-for="Parent.Race" class="text-muted"></label>
-                                @Html.DropDownListFor( c => c.Parent.RaceId, Model.Races, "-- Select Race --",
+                                <label asp-for="Learner.Race" class="text-muted"></label>
+                                @Html.DropDownListFor( c => c.Learner.RaceId, Model.Races, "-- Select Race --",
                                     new {@class = "form-control"})
                                 
                             </div>
@@ -84,16 +97,15 @@
                     </div>
         
                     <div class="form-row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label asp-for="Parent.Language" class="text-muted"></label>
-                                <label asp-for="Parent.Race" class="text-muted"></label>
-                                @Html.DropDownListFor( c => c.Parent.LanguageId, Model.Languages, "-- Select Home Language --",
-                                    new {@class = "form-control"})
-        
+                        <div class="col form-check">
+                            <div class="form-check form-group">
+                              <input asp-for="Learner.IsDisabled" class="form-check-input" type="checkbox"/>
+                              <label asp-for="Learner.IsDisabled" class="form-check-label" ></label>
                             </div>
                         </div>
                     </div>
+
+
                    
                  @*   <div class="form-row">
                         <div class="col-4">
@@ -177,14 +189,14 @@
                     </div> 
                     *@
                     <hr>
-                    <h4 class="text-info text-center text-uppercase mb-3">Contact Details</h4>
+                    <h4 class="text-dark text-center text-uppercase mb-3">Contact Details</h4>
                     
                     <div class="form-row">
                         
-                        <div class="col">
+                        <div class="col-4">
                             <div class="form-group">
-                                <label asp-for="Parent.Email" class="text-muted"></label>
-                                <input asp-for="Parent.Email" type="text" class="form-control" />
+                                <label asp-for="Learner.PhoneNumber" class="text-muted"></label>
+                                <input asp-for="Learner.PhoneNumber" type="text" class="form-control" />
                             </div>
                         </div>
                         @*<div class="col">
@@ -194,36 +206,12 @@
                             </div>
                         </div>*@
                     </div>
-        
-                    <div class="form-row">
-                        
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label asp-for="Parent.PhoneNumber" class="text-muted"></label>
-                                <input asp-for="Parent.PhoneNumber" type="text" class="form-control" />
-                            </div>
-                        </div>
+                
+                    <!-- Card Footer -->
+                    <hr />
+                    <div class="">
+                        <button type="submit" class="btn btn-dark btn-block"><i class="fa fa-user-plus"></i> @title </button>
                     </div>
-        
-                    <div class="form-row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label asp-for="Parent.Password" class="text-muted"></label>
-                                <input asp-for="Parent.Password" type="text" class="form-control" />
-                            </div>
-                        </div>
-                        @*<div class="col">
-                            <div class="form-group">
-                                <label for="confirm_password" class="text-muted"><strong>Confirm Password</strong></label>
-                                <input type="password" class="form-control" id="confirm_password"
-                                        />
-                            </div>
-                        </div>*@
-                    </div>                   
-                </div>
-                <!-- Card Footer -->
-                <div class="card-footer m-0">
-                    <button type="submit" class="btn btn-dark btn-block"><i class="fa fa-user-plus"></i> @title User</button>
                 </div>
                 </form>
         </div>

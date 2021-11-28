@@ -93,7 +93,7 @@ namespace uApply.Web.Areas.User.Controllers
                     unitOfWork.Parent.Update(parentViewModel.Parent);
                 }
                 unitOfWork.Save();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Profile), new {id = parentViewModel.Parent.Id});
             }
             else
             {
@@ -159,6 +159,20 @@ namespace uApply.Web.Areas.User.Controllers
             if (parents == null) return Json(new { success = false, message = "Erro while fetching data...." });
 
             return Json(new { data = parents });
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var learnerToDelete = unitOfWork.Learner.Get(id);
+
+            if(learnerToDelete == null) return Json(new {success = false, message = "Failed to delete"});
+
+            unitOfWork.Learner.Remove(id);
+            unitOfWork.Save();
+
+            return Json(new {success = true, message = "Succesfuly deleted!", id = id});
+
         }
 
         //[HttpGet("{id:int}")]

@@ -16,5 +16,6 @@ namespace uApply.Data.Models.Education
 
         [ForeignKey("SchoolLevelId")]
         public int SchoolLevelId { get; set; }
+        public SchoolLevel SchoolLevel { get; set; }
     }
 }

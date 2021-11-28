@@ -49,12 +49,12 @@ namespace uApply.Web.Areas.Admin.Controllers
 
                 if (schoolLevel.Id == 0)
                 {
-                    schoolLevel.SchoolId = 1;
+                    //schoolLevel.SchoolId = 1;
                     unitOfWork.SchoolLevel.Add(schoolLevel);
                 }
                 else
                 {
-                    schoolLevel.SchoolId = 1;
+                    //schoolLevel.SchoolId = 1;
                     unitOfWork.SchoolLevel.Update(schoolLevel);
                 }
                 unitOfWork.Save();

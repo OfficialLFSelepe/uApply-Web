@@ -26,6 +26,7 @@ namespace uApply.DAL.Repository
             Town = new TownRepository(db);
             School = new SchoolRepository(db);
             SchoolLevel = new SchoolLevelRepository(db);
+            Grade = new GradeRepository(db);
         }
 
         public IDistrictRepository District { get; private set; }

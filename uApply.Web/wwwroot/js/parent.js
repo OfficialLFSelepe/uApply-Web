@@ -46,7 +46,10 @@ var Delete = (url) => {
                 type: "DELETE",
                 url: url,
                 success: (data) => {
+                    console.log("OnDelete")
                     if (data.success) {
+
+                        location.reload();
                         toastr.success(data.message);
                         dataTable.ajax.reload();
                     }

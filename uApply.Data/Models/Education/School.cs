@@ -21,6 +21,11 @@ namespace uApply.Data.Models.Education
         public int TownId { get; set; }
         public Town Town { get; set; }
 
+
+        [ForeignKey("SchoolLevelId")]
+        public int SchoolLevelId { get; set; }
+        public SchoolLevel SchoolLevel { get; set; }
+
         public IEnumerable<Application> Applications { get; set; }
     }
 }

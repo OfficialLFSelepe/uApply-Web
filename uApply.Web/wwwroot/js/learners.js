@@ -1,8 +1,8 @@
 ﻿var dataTable;
 
 $(document).ready(() => {
-    var parentId = Number(document.getElementById('learnerTable').getAttribute('data-parent-id'));
-    loadTableData(parentId);
+  /*  var parentId = Number(document.getElementById('learnerTable').getAttribute('data-parent-id'));
+    loadTableData(parentId);*/
 });
 
 var loadTableData = (parentId) => {

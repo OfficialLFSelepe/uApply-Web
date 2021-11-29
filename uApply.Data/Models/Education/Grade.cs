@@ -18,9 +18,5 @@ namespace uApply.Data.Models.Education
         public int SchoolLevelId { get; set; }
         public SchoolLevel SchoolLevel { get; set; }
 
-        [ForeignKey("SchoolId")]
-        public int SchoolId { get; set; }
-        public School School  { get; set; }
-
     }
 }

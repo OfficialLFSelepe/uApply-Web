@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using uApply.DAL;
 
 namespace uApply.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211129174015_UpdateEntityWithSchoolId")]
+    partial class UpdateEntityWithSchoolId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,12 +234,6 @@ namespace uApply.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTimeOffset>("Created")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("GradeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LearnerId")
                         .HasColumnType("int");
 
@@ -249,24 +245,11 @@ namespace uApply.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GradeId");
-
                     b.HasIndex("LearnerId");
 
                     b.HasIndex("SchoolId");
 
-                    b.ToTable("Applications");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTimeOffset(new DateTime(2021, 11, 29, 22, 2, 43, 90, DateTimeKind.Unspecified).AddTicks(7863), new TimeSpan(0, 2, 0, 0, 0)),
-                            GradeId = 1,
-                            LearnerId = 1,
-                            SchoolId = 1,
-                            Status = "Not Yet Attended"
-                        });
+                    b.ToTable("Application");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Education.Grade", b =>
@@ -911,12 +894,6 @@ namespace uApply.DAL.Migrations
 
             modelBuilder.Entity("uApply.Data.Models.Education.Application", b =>
                 {
-                    b.HasOne("uApply.Data.Models.Education.Grade", "Grade")
-                        .WithMany()
-                        .HasForeignKey("GradeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("uApply.Data.Models.Learner", "Learner")
                         .WithMany()
                         .HasForeignKey("LearnerId")
@@ -928,8 +905,6 @@ namespace uApply.DAL.Migrations
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Grade");
 
                     b.Navigation("Learner");
 

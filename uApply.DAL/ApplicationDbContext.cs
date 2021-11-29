@@ -23,6 +23,7 @@ namespace uApply.DAL
         public DbSet<Learner> Learners { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<School> Schools { get; set; }
+        public DbSet<Application> Applications { get; set; }
         public DbSet<SchoolLevel> SchoolLevels { get; set; }
         public DbSet<Town> Towns { get; set; }
         public DbSet<District> Districts { get; set; }
@@ -190,27 +191,45 @@ namespace uApply.DAL
             modelBuilder.Entity<Grade>().HasData(new Grade()
             {
                 Id = 1,
-                Name = "8"
+                Name = "8",
+                SchoolLevelId = 2
             });
             modelBuilder.Entity<Grade>().HasData(new Grade()
             {
                 Id = 2,
-                Name = "9"
+                Name = "9",
+                SchoolLevelId = 2
             });
             modelBuilder.Entity<Grade>().HasData(new Grade()
             {
                 Id = 3,
-                Name = "10"
+                Name = "10",
+                SchoolLevelId = 2
             });
             modelBuilder.Entity<Grade>().HasData(new Grade()
             {
                 Id = 4,
-                Name = "11"
+                Name = "11",
+                SchoolLevelId = 2
             });
              modelBuilder.Entity<Grade>().HasData(new Grade()
             {
                 Id = 5,
-                Name = "12"
+                Name = "12",
+                 SchoolLevelId = 2
+             });
+
+            //SchoolLevel
+            modelBuilder.Entity<SchoolLevel>().HasData(new SchoolLevel()
+            {
+                Id = 1,
+                Name = "Primary School"
+            });
+            
+            modelBuilder.Entity<SchoolLevel>().HasData(new SchoolLevel()
+            {
+                Id = 2,
+                Name = "High School"
             });
 
             //Parent
@@ -256,6 +275,16 @@ namespace uApply.DAL
                 LanguageId = 2,
                 GradeId = 1
             });
+
+            //Application
+            modelBuilder.Entity<Application>().HasData(new Application()
+            {
+                Id = 1,
+                Status = "Not Yet Attended",
+                SchoolId = 1,
+                LearnerId = 1,
+                GradeId = 1
+            });    
         }
     }
 }

@@ -20,7 +20,7 @@ namespace uApply.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var schools = unitOfWork.School.GetAll(includeProperties: "Province,District,Town");
+            var schools = unitOfWork.School.GetAll(includeProperties: "Town,SchoolLevel");
             return View(schools);
         }
 
@@ -74,13 +74,11 @@ namespace uApply.Web.Areas.Admin.Controllers
 
                 if (schoolViewModel.School.Id == 0)
                 {
-                    schoolViewModel.School.TownId = 1;
                     unitOfWork.School.Add(schoolViewModel.School);
 
                 }
                 else
                 {
-                    schoolViewModel.School.TownId = 1;
                     unitOfWork.School.Update(schoolViewModel.School);
                 }
                 unitOfWork.Save();
@@ -118,15 +116,19 @@ namespace uApply.Web.Areas.Admin.Controllers
         {
             var schoolVM = new SchoolViewModel();
 
-            var schoolFromDb = unitOfWork.School.Get(id);
+            var schoolFromDb = unitOfWork.School.GetAll(s => s.Id == id, includeProperties: "Town,SchoolLevel").FirstOrDefault();
 
             schoolVM.School= schoolFromDb;
 
-            var grades = unitOfWork.Grade.GetAll(l => l.SchoolId == schoolFromDb.Id);
+            var grades = unitOfWork.Grade.GetAll(l => l.SchoolLevelId == schoolFromDb.SchoolLevelId);
 
             if (!grades.Any()) return View(schoolVM);
 
-            schoolVM.Grades = (System.Collections.Generic.IEnumerable<SelectListItem>)grades;
+            schoolVM.Grades = grades.Select(g => new SelectListItem()
+            {
+                Value = g.Id.ToString(),
+                Text = g.Name
+            });
 
             return View(schoolVM);
         }

@@ -12,8 +12,8 @@
     <div class="col-md-6">
         <p>School Name: @Model.School.Name</p>
         <p>Emis Number: @Model.School.EmisNumber</p>
-        <p>Town: @Model.School.Town</p>        
-        <p>School Level: @Model.School.SchoolLevel</p>        
+        <p>Town: @Model.School.Town.Name</p>        
+        <p>School Level: @Model.School.SchoolLevel.Name</p>        
     </div>
     <div class="col-md-3 d-flex justify-content-end">
         <a asp-area="Admin" asp-controller="School" asp-action="Upsert" asp-route-id="@Model.School.Id">

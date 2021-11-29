@@ -4,7 +4,7 @@
 <h3 class="text-center text-dark mt-3"><i class="icon ion-md-people mr-2"></i> Parents</h3>
 
 <div class="d-flex justify-content-end my-5">
-    <a  class="btn btn-dark text-white shadow"  asp-area="Admin-controller="School" asp-action="Upsert">
+    <a  class="btn btn-dark text-white shadow"  asp-area="Admin" asp-controller="School" asp-action="Upsert">
         <i class="icon ion-md-add-circle mr-2"></i> Add School
     </a>
 </div>
@@ -27,14 +27,14 @@
             <tr>
                 <td>@school.Name</td>
                 <td>@school.EmisNumber</td>
-                <td>@school.Town</td>
-                <td>@school.SchoolLevel</td>                
+                <td>@school.Town.Name</td>
+                <td>@school.SchoolLevel.Name</td>                
                 <td class="d-flex justify-content-around">
                     <a  asp-area="Admin" asp-controller="School" asp-action="Upsert" asp-route-id="@school.Id"  class="text-dark">
                         <i class="icon ion-md-create mr-2"></i>
                     </a>
                
-                    <a class="text-dark" asp-area="admin" asp-controller="School" asp-action="SchoolsView" asp-route-id="@school.Id">
+                    <a class="text-dark" asp-area="Admin" asp-controller="School" asp-action="Profile" asp-route-id="@school.Id">
                         <i class="icon ion-md-person mr-2"></i>
                     </a>
                 </td>

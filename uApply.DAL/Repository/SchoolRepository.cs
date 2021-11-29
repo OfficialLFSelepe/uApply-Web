@@ -25,6 +25,9 @@ namespace uApply.DAL.Repository
             if (schoolFromDb != null)
             {
                 schoolFromDb.Name = school.Name;
+                schoolFromDb.EmisNumber = school.EmisNumber;
+                schoolFromDb.Town = school.Town;
+                schoolFromDb.SchoolLevel = school.SchoolLevel;
                 db.SaveChanges();
             }
         }

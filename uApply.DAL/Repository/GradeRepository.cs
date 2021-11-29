@@ -24,6 +24,7 @@ namespace uApply.DAL.Repository
             if (gradeFromDb != null)
             {
                 gradeFromDb.Name = grade.Name;
+                gradeFromDb.SchoolLevel = grade.SchoolLevel;
                 db.SaveChanges();
             }
         }

@@ -27,7 +27,6 @@ namespace uApply.Data.Models.Education
         public int SchoolLevelId { get; set; }
         public SchoolLevel SchoolLevel { get; set; }
 
-        
-        public IEnumerable<SchoolApplication> SchoolApplications { get; set; }
+        public IEnumerable<SchoolApplication> Applications { get; set; }
     }
 }

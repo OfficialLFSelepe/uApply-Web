@@ -51,13 +51,13 @@
                         <td>@learner.FullNames</td>
                         <td>@learner.Surname</td>
                         <td>@learner.IdNumber</td>
-                        <td>0</td>
+                        <td>@Model.SchoolApplications.Where(a => a.LearnerId == learner.Id).ToList().Count</td>
                        <td class="d-flex justify-content-center">
                             <a asp-area="User" asp-controller="Learner" asp-action="Upsert" asp-route-id="@learner.Id"  class="text-dark" style="font-size: 25px">
                                 <i class="icon ion-md-create mr-5"></i>
                             </a>
 
-                            <a class="text-success" style="font-size: 25px">
+                            <a asp-area="User" asp-controller="SchoolApplication" asp-action="Upsert" asp-route-learnerid="@learner.Id" asp-route-parentid="@Model.Parent.Id" class="text-success" style="font-size: 25px">
                                 <i class="icon ion-md-document mr-5"></i>
                             </a>
                             

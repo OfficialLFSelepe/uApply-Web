@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using uApply.Data.Models;
+using uApply.Data.Models.Education;
 
 namespace uApply.Utils.ViewModels.UserVM
 {
@@ -17,5 +18,9 @@ namespace uApply.Utils.ViewModels.UserVM
         public IEnumerable<SelectListItem> Nationalities { get; set; }
         public IEnumerable<SelectListItem> Languages { get; set; }
         public IEnumerable<Learner> Learners { get; set; }
+
+        //TODO: Just for DEMO -- SHOULD BE REMOVED
+        public IEnumerable<SchoolApplication> SchoolApplications { get; set; }
+
     }
 }

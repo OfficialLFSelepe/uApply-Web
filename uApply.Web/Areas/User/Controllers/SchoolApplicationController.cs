@@ -23,7 +23,7 @@ namespace uApply.Web.Areas.User.Controllers
             return View(schoolApplications);
         }
 
-        public IActionResult Upsert(int? id)
+        public IActionResult Upsert(int? id, int learnerId, int parentId)
         {
 
 
@@ -59,6 +59,8 @@ namespace uApply.Web.Areas.User.Controllers
 
             };
 
+            schoolApplicationViewModel.SchoolApplication.LearnerId = learnerId;
+            schoolApplicationViewModel.ParentId = parentId;
 
             if (id == null) return View(schoolApplicationViewModel);
 
@@ -84,17 +86,16 @@ namespace uApply.Web.Areas.User.Controllers
 
                 if (schoolApplicationViewModel.SchoolApplication.Id == 0)
                 {
-                    schoolApplicationViewModel.SchoolApplication.SchoolId = 1;
+                    schoolApplicationViewModel.SchoolApplication.Status = "Not Yet Attended";
                     unitOfWork.SchoolApplication.Add(schoolApplicationViewModel.SchoolApplication );
 
                 }
                 else
                 {
                     schoolApplicationViewModel.SchoolApplication.SchoolId = 1;
-                    unitOfWork.SchoolApplication.Update(schoolApplicationViewModel.SchoolApplication);
                 }
                 unitOfWork.Save();
-                return RedirectToAction(nameof(Profile), new { id = schoolApplicationViewModel.SchoolApplication.Id });
+                return RedirectToAction(nameof(Profile), "Parent",  new { id = schoolApplicationViewModel.ParentId });
             }
             else
             {

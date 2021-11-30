@@ -11,6 +11,7 @@ namespace uApply.Utils.ViewModels.EducationVM
     public class SchoolApplicationViewModel
     {
         public SchoolApplication SchoolApplication { get; set; }
+        public int ParentId { get; set; }
         public IEnumerable<SelectListItem> Districts { get; set; }
         public IEnumerable<SelectListItem> Towns { get; set; }
         public IEnumerable<SelectListItem> SchoolLevels { get; set; }

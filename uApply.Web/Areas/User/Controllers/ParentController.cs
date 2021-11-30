@@ -145,6 +145,7 @@ namespace uApply.Web.Areas.User.Controllers
             if (!learners.Any()) return View(parentVM);
 
             parentVM.Learners = learners;
+            parentVM.SchoolApplications = unitOfWork.SchoolApplication.GetAll();
             
             return View(parentVM);
         }

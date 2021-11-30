@@ -120,15 +120,11 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             schoolVM.School= schoolFromDb;
 
-            var grades = unitOfWork.Grade.GetAll(l => l.SchoolLevelId == schoolFromDb.SchoolLevelId);
+            var applications = unitOfWork.SchoolApplication.GetAll(a => a.SchoolId == id, includeProperties: "Learner,Grade");
 
-            if (!grades.Any()) return View(schoolVM);
+            if (!applications.Any()) return View(schoolVM);
 
-            schoolVM.Grades = grades.Select(g => new SelectListItem()
-            {
-                Value = g.Id.ToString(),
-                Text = g.Name
-            });
+            schoolVM.Applications = applications;
 
             return View(schoolVM);
         }

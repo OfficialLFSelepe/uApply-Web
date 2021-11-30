@@ -41,7 +41,7 @@ namespace uApply.DAL
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-
+/*
             modelBuilder.Entity<Province>().HasData(new Province()
             {
                 Id = 1,

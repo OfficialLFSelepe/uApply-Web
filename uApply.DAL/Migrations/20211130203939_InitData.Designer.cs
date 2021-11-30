@@ -10,8 +10,8 @@ using uApply.DAL;
 namespace uApply.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211122190404_FirstSeeds")]
-    partial class FirstSeeds
+    [Migration("20211130203939_InitData")]
+    partial class InitData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -227,26 +227,6 @@ namespace uApply.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("uApply.Data.Models.Education.Application", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchoolId");
-
-                    b.ToTable("Application");
-                });
-
             modelBuilder.Entity("uApply.Data.Models.Education.Grade", b =>
                 {
                     b.Property<int>("Id")
@@ -257,36 +237,14 @@ namespace uApply.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SchoolLevelId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Grades");
+                    b.HasIndex("SchoolLevelId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "8"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "9"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "10"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "11"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "12"
-                        });
+                    b.ToTable("Grades");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Education.School", b =>
@@ -302,14 +260,52 @@ namespace uApply.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SchoolLevelId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TownId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SchoolLevelId");
+
                     b.HasIndex("TownId");
 
                     b.ToTable("Schools");
+                });
+
+            modelBuilder.Entity("uApply.Data.Models.Education.SchoolApplication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTimeOffset>("Created")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("GradeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LearnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SchoolId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GradeId");
+
+                    b.HasIndex("LearnerId");
+
+                    b.HasIndex("SchoolId");
+
+                    b.ToTable("SchoolApplications");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Gender", b =>
@@ -319,24 +315,12 @@ namespace uApply.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("GenderType")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Genders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GenderType = "Male"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenderType = "Female"
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Language", b =>
@@ -351,24 +335,7 @@ namespace uApply.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Language");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "English"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Sesotho"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "isiXhosa"
-                        });
+                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Learner", b =>
@@ -400,6 +367,9 @@ namespace uApply.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("NationalityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -442,6 +412,8 @@ namespace uApply.DAL.Migrations
 
                     b.HasIndex("NationalityId");
 
+                    b.HasIndex("ParentId");
+
                     b.HasIndex("RaceId");
 
                     b.HasIndex("TitleId");
@@ -449,29 +421,6 @@ namespace uApply.DAL.Migrations
                     b.HasIndex("TownId");
 
                     b.ToTable("Learners");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "maxvitsha@gmail.com",
-                            FullNames = "Sne Maxwell",
-                            GenderId = 1,
-                            GradeId = 1,
-                            IdNumber = 9802356508984L,
-                            IsDisabled = false,
-                            LanguageId = 2,
-                            NationalityId = 1,
-                            Password = "@Sijo4C#",
-                            PhoneNumber = "0645698789",
-                            PostalCode = 611,
-                            RaceId = 1,
-                            StreetAddress = "10360 Poulos Village",
-                            Surburb = "Bakenberg",
-                            Surname = "Selepe",
-                            TitleId = 1,
-                            TownId = 1
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Location.District", b =>
@@ -492,26 +441,6 @@ namespace uApply.DAL.Migrations
                     b.HasIndex("ProvinceId");
 
                     b.ToTable("Districts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Mangaung",
-                            ProvinceId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Lejweleputswa",
-                            ProvinceId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Xhariep",
-                            ProvinceId = 1
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Location.Town", b =>
@@ -532,44 +461,6 @@ namespace uApply.DAL.Migrations
                     b.HasIndex("DistrictId");
 
                     b.ToTable("Towns");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DistrictId = 1,
-                            Name = "Bloem"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DistrictId = 1,
-                            Name = "Botshabelo"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DistrictId = 2,
-                            Name = "phuthaditjhaba"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DistrictId = 2,
-                            Name = "betlehem"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DistrictId = 3,
-                            Name = "Frankfort"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DistrictId = 3,
-                            Name = "Ficksburg"
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Nationality", b =>
@@ -584,19 +475,7 @@ namespace uApply.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nationality");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "South Africa"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Other"
-                        });
+                    b.ToTable("Nationalities");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Parent", b =>
@@ -669,27 +548,6 @@ namespace uApply.DAL.Migrations
                     b.HasIndex("TownId");
 
                     b.ToTable("Parents");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "lesetjaofficial26@gmail.com",
-                            FullNames = "lesetja Frans",
-                            GenderId = 1,
-                            IdNumber = 3265453088L,
-                            LanguageId = 2,
-                            NationalityId = 1,
-                            Password = "@Sijo4C#",
-                            PhoneNumber = "0636517935",
-                            PostalCode = 611,
-                            RaceId = 1,
-                            StreetAddress = "10360 Poulos Village",
-                            Surburb = "Bakenberg",
-                            Surname = "Selepe",
-                            TitleId = 1,
-                            TownId = 1
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Province", b =>
@@ -705,13 +563,6 @@ namespace uApply.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Provinces");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Free State"
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Race", b =>
@@ -726,19 +577,7 @@ namespace uApply.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Race");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "African"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "White"
-                        });
+                    b.ToTable("Races");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.SchoolLevel", b =>
@@ -769,28 +608,6 @@ namespace uApply.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Titles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Mr"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Miss"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Mrs"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Dr"
-                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.ApplicationUser", b =>
@@ -808,7 +625,7 @@ namespace uApply.DAL.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -817,7 +634,7 @@ namespace uApply.DAL.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -826,7 +643,7 @@ namespace uApply.DAL.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -835,13 +652,13 @@ namespace uApply.DAL.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -850,30 +667,65 @@ namespace uApply.DAL.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("uApply.Data.Models.Education.Application", b =>
+            modelBuilder.Entity("uApply.Data.Models.Education.Grade", b =>
                 {
-                    b.HasOne("uApply.Data.Models.Education.School", "School")
-                        .WithMany("Applications")
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("uApply.Data.Models.SchoolLevel", "SchoolLevel")
+                        .WithMany()
+                        .HasForeignKey("SchoolLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("School");
+                    b.Navigation("SchoolLevel");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Education.School", b =>
                 {
+                    b.HasOne("uApply.Data.Models.SchoolLevel", "SchoolLevel")
+                        .WithMany()
+                        .HasForeignKey("SchoolLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("uApply.Data.Models.Location.Town", "Town")
                         .WithMany()
                         .HasForeignKey("TownId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.Navigation("SchoolLevel");
+
                     b.Navigation("Town");
+                });
+
+            modelBuilder.Entity("uApply.Data.Models.Education.SchoolApplication", b =>
+                {
+                    b.HasOne("uApply.Data.Models.Education.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("uApply.Data.Models.Learner", "Learner")
+                        .WithMany()
+                        .HasForeignKey("LearnerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("uApply.Data.Models.Education.School", "School")
+                        .WithMany()
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Grade");
+
+                    b.Navigation("Learner");
+
+                    b.Navigation("School");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Learner", b =>
@@ -881,43 +733,49 @@ namespace uApply.DAL.Migrations
                     b.HasOne("uApply.Data.Models.Gender", "Gender")
                         .WithMany()
                         .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Education.Grade", "Grade")
                         .WithMany()
                         .HasForeignKey("GradeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Nationality", "Nationality")
                         .WithMany()
                         .HasForeignKey("NationalityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("uApply.Data.Models.Parent", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Race", "Race")
                         .WithMany()
                         .HasForeignKey("RaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Title", "Title")
                         .WithMany()
                         .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Location.Town", "Town")
                         .WithMany()
                         .HasForeignKey("TownId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Gender");
@@ -927,6 +785,8 @@ namespace uApply.DAL.Migrations
                     b.Navigation("Language");
 
                     b.Navigation("Nationality");
+
+                    b.Navigation("Parent");
 
                     b.Navigation("Race");
 
@@ -940,7 +800,7 @@ namespace uApply.DAL.Migrations
                     b.HasOne("uApply.Data.Models.Province", "Province")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Province");
@@ -951,7 +811,7 @@ namespace uApply.DAL.Migrations
                     b.HasOne("uApply.Data.Models.Location.District", "District")
                         .WithMany()
                         .HasForeignKey("DistrictId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("District");
@@ -962,37 +822,37 @@ namespace uApply.DAL.Migrations
                     b.HasOne("uApply.Data.Models.Gender", "Gender")
                         .WithMany()
                         .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Nationality", "Nationality")
                         .WithMany()
                         .HasForeignKey("NationalityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Race", "Race")
                         .WithMany()
                         .HasForeignKey("RaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Title", "Title")
                         .WithMany()
                         .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Location.Town", "Town")
                         .WithMany()
                         .HasForeignKey("TownId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Gender");
@@ -1006,11 +866,6 @@ namespace uApply.DAL.Migrations
                     b.Navigation("Title");
 
                     b.Navigation("Town");
-                });
-
-            modelBuilder.Entity("uApply.Data.Models.Education.School", b =>
-                {
-                    b.Navigation("Applications");
                 });
 #pragma warning restore 612, 618
         }

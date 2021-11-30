@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace uApply.Data.Models.Education
 {
-    public class Application
+    public class SchoolApplication
     {
         public int Id { get; set; }
         public string Status { get; set; }

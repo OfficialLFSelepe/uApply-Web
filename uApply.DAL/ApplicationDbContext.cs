@@ -23,7 +23,7 @@ namespace uApply.DAL
         public DbSet<Learner> Learners { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<School> Schools { get; set; }
-        public DbSet<Application> Applications { get; set; }
+        public DbSet<SchoolApplication> Applications { get; set; }
         public DbSet<SchoolLevel> SchoolLevels { get; set; }
         public DbSet<Town> Towns { get; set; }
         public DbSet<District> Districts { get; set; }
@@ -277,7 +277,7 @@ namespace uApply.DAL
             });
 
             //Application
-            modelBuilder.Entity<Application>().HasData(new Application()
+            modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
             {
                 Id = 1,
                 Status = "Not Yet Attended",

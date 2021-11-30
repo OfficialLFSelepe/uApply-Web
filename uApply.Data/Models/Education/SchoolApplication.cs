@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace uApply.Data.Models.Education
 {
-    public class Application
+    public class SchoolApplication
     {
+        [Key]
         public int Id { get; set; }
         public string Status { get; set; }
 

@@ -10,10 +10,10 @@ namespace uApply.Utils.ViewModels.EducationVM
 {
     public class SchoolApplicationViewModel
     {
-        public Application Application { get; set; }
+        public SchoolApplication SchoolApplication { get; set; }
         public IEnumerable<SelectListItem> Districts { get; set; }
         public IEnumerable<SelectListItem> Towns { get; set; }
-        public IEnumerable<SelectListItem> SchoolLevel { get; set; }
+        public IEnumerable<SelectListItem> SchoolLevels { get; set; }
         public IEnumerable<SelectListItem> Schools { get; set; }
         public IEnumerable<SelectListItem> Grades { get; set; }
 

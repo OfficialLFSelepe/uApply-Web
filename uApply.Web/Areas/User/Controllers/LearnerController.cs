@@ -5,6 +5,8 @@ using uApply.Data.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using uApply.Utils.ViewModels.EducationVM;
+using uApply.Data.Models.Education;
 
 namespace uApply.Web.Areas.User.Controllers
 {
@@ -79,6 +81,7 @@ namespace uApply.Web.Areas.User.Controllers
 
             return View(learnerVM);
         }
+                
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -137,6 +140,23 @@ namespace uApply.Web.Areas.User.Controllers
                 }
             }
             return View(learnerViewModel);
+        }
+
+        public IActionResult Apply(int id)
+        {
+            var schoolApplicationVM = new SchoolApplicationViewModel();
+
+            var schoolApplicationFromDb = unitOfWork.SchoolApplication.Get(id);
+
+            schoolApplicationVM.SchoolApplication = schoolApplicationFromDb;
+
+            //var learners = unitOfWork.Learner.GetAll(l => l.ParentId == parentFromDb.Id);
+
+            //if (!learners.Any()) return View(parentVM);
+
+            //parentVM.Learners = learners;
+
+            return View(schoolApplicationVM);
         }
     }
 }

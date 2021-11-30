@@ -20,6 +20,7 @@ namespace uApply.DAL.Repository.IRepository
         ISchoolRepository School { get; }
         ISchoolLevelRepository SchoolLevel { get; }
         IGradeRepository Grade { get; }
+        ISchoolApplicationRepository SchoolApplication { get; }
 
         
         void Save();

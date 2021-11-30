@@ -1,0 +1,56 @@
+﻿@model uApply.Utils.ViewModels.EducationVM.SchoolApplicationViewModel
+@{
+    var title = Model.SchoolApplication.Id == 0 ? "Register" : "Update";
+}
+
+ <div class="container">
+
+         <div class="card shadow my-3">
+            <div class="card-header py-3">
+                <p class="text-center text-dark m-0 font-weight-bold">User Registration</p>
+            </div>
+            <form  method="post">
+                <div class="card-body">
+                    <input type="hidden" asp-for="SchoolApplication.Id"  />     
+
+                    <h4 class="text-info text-center text-uppercase mb-3">Personal Details</h4>                         
+                                    
+                    <div class="form-row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label asp-for="SchoolApplication.School" class="text-muted"></label>
+                                  @Html.DropDownListFor( c => c.SchoolApplication.SchoolId, Model.Schools, "-- Select School --",
+                                    new {@class = "form-control"})                                
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid zip.
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label asp-for="SchoolApplication.Grade" class="text-muted"></label>
+                                @Html.DropDownListFor( c => c.SchoolApplication.GradeId, Model.Grades, "-- Select Grade --",
+                                    new {@class = "form-control"})
+                            </div>
+                        </div>                        
+                    </div>                
+                      
+                    <div class="form-row">        
+                       <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="SchoolApplication.Status" class="text-muted"></label>
+                                <input asp-for="SchoolApplication.Status" type="text" class="form-control" />
+                            </div>
+                        </div>                     
+                    </div>          
+                                                                         
+                <!-- Card Footer -->
+                <div class="card-footer m-0">
+                    <button type="submit" class="btn btn-dark btn-block"><i class="fa fa-user-plus"></i> @title User</button>
+                </div>
+                </div>
+             </form>
+        </div>
+        
+    </div>
+

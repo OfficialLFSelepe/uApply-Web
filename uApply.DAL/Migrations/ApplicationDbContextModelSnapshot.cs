@@ -303,6 +303,56 @@ namespace uApply.DAL.Migrations
                     b.HasIndex("TownId");
 
                     b.ToTable("Schools");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EmisNumber = 896541231L,
+                            Name = "Bloemfontein High School",
+                            SchoolLevelId = 2,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EmisNumber = 123456789L,
+                            Name = "HTS louis Botha High School",
+                            SchoolLevelId = 2,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EmisNumber = 456985213L,
+                            Name = "Navalsig High School",
+                            SchoolLevelId = 2,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EmisNumber = 6458322544L,
+                            Name = "Rose View Primary School",
+                            SchoolLevelId = 1,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EmisNumber = 7532156498L,
+                            Name = "Castle Bridge Primary School",
+                            SchoolLevelId = 1,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EmisNumber = 9632587412L,
+                            Name = "Mangaung Primary School",
+                            SchoolLevelId = 1,
+                            TownId = 1
+                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Education.SchoolApplication", b =>
@@ -341,7 +391,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTimeOffset(new DateTime(2021, 11, 30, 18, 36, 3, 308, DateTimeKind.Unspecified).AddTicks(948), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 1, 9, 5, 8, 556, DateTimeKind.Unspecified).AddTicks(9768), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 1,
                             LearnerId = 1,
                             SchoolId = 1,
@@ -954,7 +1004,7 @@ namespace uApply.DAL.Migrations
                         .IsRequired();
 
                     b.HasOne("uApply.Data.Models.Education.School", "School")
-                        .WithMany("Applications")
+                        .WithMany()
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1104,11 +1154,6 @@ namespace uApply.DAL.Migrations
                     b.Navigation("Title");
 
                     b.Navigation("Town");
-                });
-
-            modelBuilder.Entity("uApply.Data.Models.Education.School", b =>
-                {
-                    b.Navigation("Applications");
                 });
 #pragma warning restore 612, 618
         }

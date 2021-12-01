@@ -3,7 +3,7 @@
     var learners = Model.Learners;
 }
 
- <h3 class="text-center text-uppercase text-muted my-5">Profile</h3>
+ <h3 class="text-center text-uppercase text-muted my-5">Parent Profile</h3>
 <div class="shadow card mb-2">
     <div class="row profile-wrapper p-2">
     <div class="col-md-3 d-flex justify-content-center align-content-center">
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<a asp-area="User" asp-controller="Learner" asp-action="Upsert" asp-route-parentid="@Model.Parent.Id" class="btn btn-dark btn-block shadow mt-3"> <i class="icon ion-md-add-circle-outline mr-2"></i>Add Learner</a>
+<a asp-area="User" asp-controller="Learner" asp-action="Upsert" asp-route-parentid="@Model.Parent.Id" class="btn btn-dark btn-block shadow mt-3"> <i class="icon ion-md-add-circle-outline mr-2"></i>Add New Learner</a>
 
 <h3 class="text-center text-muted text-uppercase mt-5">My Learners</h3>
     

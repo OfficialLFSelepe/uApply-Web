@@ -116,30 +116,30 @@ namespace uApply.DAL
             //Nationlity - RSA And Other
             modelBuilder.Entity<Nationality>().HasData(new Nationality()
             {
-                Id=1,
-                Name="South Africa"
+                Id = 1,
+                Name = "South Africa"
             });
             modelBuilder.Entity<Nationality>().HasData(new Nationality()
             {
-                Id=2,
-                Name="Other"
+                Id = 2,
+                Name = "Other"
             });
 
             //Language  - 3
             modelBuilder.Entity<Language>().HasData(new Language()
             {
-                Id=1,
-                Name ="English"
+                Id = 1,
+                Name = "English"
             });
             modelBuilder.Entity<Language>().HasData(new Language()
             {
-                Id=2,
-                Name ="Sesotho"
+                Id = 2,
+                Name = "Sesotho"
             });
             modelBuilder.Entity<Language>().HasData(new Language()
             {
-                Id=3,
-                Name ="isiXhosa"
+                Id = 3,
+                Name = "isiXhosa"
             });
 
             // Race
@@ -212,12 +212,12 @@ namespace uApply.DAL
                 Name = "11",
                 SchoolLevelId = 2
             });
-             modelBuilder.Entity<Grade>().HasData(new Grade()
+            modelBuilder.Entity<Grade>().HasData(new Grade()
             {
                 Id = 5,
                 Name = "12",
-                 SchoolLevelId = 2
-             });
+                SchoolLevelId = 2
+            });
 
             //SchoolLevel
             modelBuilder.Entity<SchoolLevel>().HasData(new SchoolLevel()
@@ -225,32 +225,84 @@ namespace uApply.DAL
                 Id = 1,
                 Name = "Primary School"
             });
-            
+
             modelBuilder.Entity<SchoolLevel>().HasData(new SchoolLevel()
             {
                 Id = 2,
                 Name = "High School"
             });
 
+            //Schools
+            
+            modelBuilder.Entity<School>().HasData(new School()
+            {
+                Id = 1,
+                Name = "Bloemfontein High School",
+                EmisNumber = 896541231,
+                TownId = 1,
+                SchoolLevelId = 2
+            });
+            modelBuilder.Entity<School>().HasData(new School()
+            {
+                Id = 2,
+                Name = "HTS louis Botha High School",
+                EmisNumber = 123456789,
+                TownId = 1,
+                SchoolLevelId = 2
+            });
+            modelBuilder.Entity<School>().HasData(new School()
+            {
+                Id = 3,
+                Name = "Navalsig High School",
+                EmisNumber = 456985213,
+                TownId = 1,
+                SchoolLevelId = 2
+            });
+            modelBuilder.Entity<School>().HasData(new School()
+            {
+                Id = 4,
+                Name = "Rose View Primary School",
+                EmisNumber = 6458322544,
+                TownId = 1,
+                SchoolLevelId = 1
+            });
+            modelBuilder.Entity<School>().HasData(new School()
+            {
+                Id = 5,
+                Name = "Castle Bridge Primary School",
+                EmisNumber = 7532156498,
+                TownId = 1,
+                SchoolLevelId = 1
+            });
+            modelBuilder.Entity<School>().HasData(new School()
+            {
+                Id = 6,
+                Name = "Mangaung Primary School",
+                EmisNumber = 9632587412,
+                TownId = 1,
+                SchoolLevelId = 1
+            });
+
+
             //Parent
             modelBuilder.Entity<Parent>().HasData(new Parent()
             {
                 Id = 1,
-                FullNames ="lesetja Frans",
-                Surname ="Selepe",
+                FullNames = "lesetja Frans",
+                Surname = "Selepe",
                 IdNumber = 0003265453088,
-                PhoneNumber ="0636517935",
-                Email ="lesetjaofficial26@gmail.com",
-                Password ="@Sijo4C#",
-                StreetAddress ="10360 Poulos Village",
-                Surburb ="Bakenberg",
-                PostalCode =0611,
+                PhoneNumber = "0636517935",
+                Email = "lesetjaofficial26@gmail.com",
+                Password = "@Sijo4C#",
+                StreetAddress = "10360 Poulos Village",
+                Surburb = "Bakenberg",
+                PostalCode = 0611,
                 TownId = 1,
                 TitleId = 1,
                 GenderId = 1,
                 NationalityId = 1,
                 RaceId = 1,
-                LanguageId = 2                
+                LanguageId = 2
             });
 
             //Learner
@@ -285,7 +337,7 @@ namespace uApply.DAL
                 SchoolId = 1,
                 LearnerId = 1,
                 GradeId = 1
-            });    
+            });
         }
     }
 }

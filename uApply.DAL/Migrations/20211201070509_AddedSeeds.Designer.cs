@@ -10,8 +10,8 @@ using uApply.DAL;
 namespace uApply.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211127175332_SchoolLevelRefactor")]
-    partial class SchoolLevelRefactor
+    [Migration("20211201070509_AddedSeeds")]
+    partial class AddedSeeds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -227,31 +227,6 @@ namespace uApply.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("uApply.Data.Models.Education.Application", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("LearnerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LearnerId");
-
-                    b.HasIndex("SchoolId");
-
-                    b.ToTable("Application");
-                });
-
             modelBuilder.Entity("uApply.Data.Models.Education.Grade", b =>
                 {
                     b.Property<int>("Id")
@@ -267,6 +242,8 @@ namespace uApply.DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SchoolLevelId");
+
                     b.ToTable("Grades");
 
                     b.HasData(
@@ -274,31 +251,31 @@ namespace uApply.DAL.Migrations
                         {
                             Id = 1,
                             Name = "8",
-                            SchoolLevelId = 0
+                            SchoolLevelId = 2
                         },
                         new
                         {
                             Id = 2,
                             Name = "9",
-                            SchoolLevelId = 0
+                            SchoolLevelId = 2
                         },
                         new
                         {
                             Id = 3,
                             Name = "10",
-                            SchoolLevelId = 0
+                            SchoolLevelId = 2
                         },
                         new
                         {
                             Id = 4,
                             Name = "11",
-                            SchoolLevelId = 0
+                            SchoolLevelId = 2
                         },
                         new
                         {
                             Id = 5,
                             Name = "12",
-                            SchoolLevelId = 0
+                            SchoolLevelId = 2
                         });
                 });
 
@@ -328,6 +305,100 @@ namespace uApply.DAL.Migrations
                     b.HasIndex("TownId");
 
                     b.ToTable("Schools");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EmisNumber = 896541231L,
+                            Name = "Bloemfontein High School",
+                            SchoolLevelId = 2,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EmisNumber = 123456789L,
+                            Name = "HTS louis Botha High School",
+                            SchoolLevelId = 2,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EmisNumber = 456985213L,
+                            Name = "Navalsig High School",
+                            SchoolLevelId = 2,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EmisNumber = 6458322544L,
+                            Name = "Rose View Primary School",
+                            SchoolLevelId = 1,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EmisNumber = 7532156498L,
+                            Name = "Castle Bridge Primary School",
+                            SchoolLevelId = 1,
+                            TownId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EmisNumber = 9632587412L,
+                            Name = "Mangaung Primary School",
+                            SchoolLevelId = 1,
+                            TownId = 1
+                        });
+                });
+
+            modelBuilder.Entity("uApply.Data.Models.Education.SchoolApplication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTimeOffset>("Created")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("GradeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LearnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SchoolId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GradeId");
+
+                    b.HasIndex("LearnerId");
+
+                    b.HasIndex("SchoolId");
+
+                    b.ToTable("SchoolApplications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 1, 9, 5, 8, 556, DateTimeKind.Unspecified).AddTicks(9768), new TimeSpan(0, 2, 0, 0, 0)),
+                            GradeId = 1,
+                            LearnerId = 1,
+                            SchoolId = 1,
+                            Status = "Not Yet Attended"
+                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Gender", b =>
@@ -778,6 +849,18 @@ namespace uApply.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SchoolLevels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Primary School"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "High School"
+                        });
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Title", b =>
@@ -878,23 +961,15 @@ namespace uApply.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("uApply.Data.Models.Education.Application", b =>
+            modelBuilder.Entity("uApply.Data.Models.Education.Grade", b =>
                 {
-                    b.HasOne("uApply.Data.Models.Learner", "Learner")
+                    b.HasOne("uApply.Data.Models.SchoolLevel", "SchoolLevel")
                         .WithMany()
-                        .HasForeignKey("LearnerId")
+                        .HasForeignKey("SchoolLevelId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("uApply.Data.Models.Education.School", "School")
-                        .WithMany("Applications")
-                        .HasForeignKey("SchoolId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Learner");
-
-                    b.Navigation("School");
+                    b.Navigation("SchoolLevel");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Education.School", b =>
@@ -914,6 +989,33 @@ namespace uApply.DAL.Migrations
                     b.Navigation("SchoolLevel");
 
                     b.Navigation("Town");
+                });
+
+            modelBuilder.Entity("uApply.Data.Models.Education.SchoolApplication", b =>
+                {
+                    b.HasOne("uApply.Data.Models.Education.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("uApply.Data.Models.Learner", "Learner")
+                        .WithMany()
+                        .HasForeignKey("LearnerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("uApply.Data.Models.Education.School", "School")
+                        .WithMany()
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Grade");
+
+                    b.Navigation("Learner");
+
+                    b.Navigation("School");
                 });
 
             modelBuilder.Entity("uApply.Data.Models.Learner", b =>
@@ -1054,11 +1156,6 @@ namespace uApply.DAL.Migrations
                     b.Navigation("Title");
 
                     b.Navigation("Town");
-                });
-
-            modelBuilder.Entity("uApply.Data.Models.Education.School", b =>
-                {
-                    b.Navigation("Applications");
                 });
 #pragma warning restore 612, 618
         }

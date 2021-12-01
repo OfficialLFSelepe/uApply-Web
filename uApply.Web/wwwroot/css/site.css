@@ -70,5 +70,46 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+/* ------------ Landing Page ----------------*/
 
+.text-center {
+    margin-top: 20px;
+}
 
+.text-center h4 {
+    margin: 20px;
+}
+
+div img {
+    width:1080px;
+    margin-top: 20px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 24px;
+    margin: 15px;
+    
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;   
+}
+
+    .feature-item p {
+        margin: 0;
+    }
+
+.features .icon {
+    font-size: 30px;
+    padding: 15px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

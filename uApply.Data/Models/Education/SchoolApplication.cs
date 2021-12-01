@@ -13,7 +13,10 @@ namespace uApply.Data.Models.Education
     {
         [Key]
         public int Id { get; set; }
-        public string Status { get; set; }
+
+        [ForeignKey("StatusId")]
+        public int StatusId { get; set; }
+        public Status Status { get; set; }
 
         public DateTimeOffset Created { get; set; } = DateTimeOffset.Now;
 

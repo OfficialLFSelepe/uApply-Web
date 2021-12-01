@@ -54,8 +54,8 @@
                                 <i class="icon ion-md-create mr-5"></i>
                             </a>
 *@
-                            <a class="text-success" style="font-size: 25px">
-                                <i class="icon ion-md-document mr-5"></i>
+                            <a asp-action="LearnerApplicationView" asp-route-applicationId="@application.Id" class="text-success" style="font-size: 25px">
+                                <i class="icon ion-md-eye mr-5"></i>
                             </a>
                             
                             @*<a onclick="Delete(`/Admin/School/Delete/${@grade.Id}`)" class="text-danger" style="font-size: 25px">

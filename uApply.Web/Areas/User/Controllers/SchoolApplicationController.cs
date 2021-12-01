@@ -86,7 +86,7 @@ namespace uApply.Web.Areas.User.Controllers
 
                 if (schoolApplicationViewModel.SchoolApplication.Id == 0)
                 {
-                    schoolApplicationViewModel.SchoolApplication.Status = "Not Yet Attended";
+                    schoolApplicationViewModel.SchoolApplication.StatusId = 1;
                     unitOfWork.SchoolApplication.Add(schoolApplicationViewModel.SchoolApplication );
 
                 }

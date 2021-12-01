@@ -33,6 +33,8 @@ namespace uApply.DAL
         public DbSet<Language> Languages { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<Race> Races { get; set; }
+        public DbSet<Status> ApplicationStatuses { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -332,12 +334,80 @@ namespace uApply.DAL
             modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
             {
                 Id = 1,
-                Status = "Not Yet Attended",
+                StatusId = 1,
                 Created = DateTime.Now,
                 SchoolId = 1,
                 LearnerId = 1,
                 GradeId = 1
             });
+            modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
+            {
+                Id = 2,
+                StatusId = 2,
+                Created = DateTime.Now,
+                SchoolId = 2,
+                LearnerId = 1,
+                GradeId = 1
+            });
+            modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
+            {
+                Id = 3,
+                StatusId = 2,
+                Created = DateTime.Now,
+                SchoolId = 3,
+                LearnerId = 1,
+                GradeId = 1
+            });
+            modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
+            {
+                Id = 4,
+                StatusId = 2,
+                Created = DateTime.Now,
+                SchoolId = 4,
+                LearnerId = 1,
+                GradeId = 4
+            });
+            modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
+            {
+                Id = 5,
+                StatusId = 3,
+                Created = DateTime.Now,
+                SchoolId = 5,
+                LearnerId = 1,
+                GradeId = 1
+            });
+             modelBuilder.Entity<SchoolApplication>().HasData(new SchoolApplication()
+            {
+                Id = 6,
+                StatusId = 4,
+                Created = DateTime.Now,
+                SchoolId = 6,
+                LearnerId = 1,
+                GradeId = 5
+            });
+
+            //Status
+            modelBuilder.Entity<Status>().HasData(new Status()
+            {
+                Id = 1,
+                Name = "Not Yet attended"
+            });
+            modelBuilder.Entity<Status>().HasData(new Status()
+            {
+                Id = 2,
+                Name = "Processing"
+            });
+            modelBuilder.Entity<Status>().HasData(new Status()
+            {
+                Id = 3,
+                Name = "Admitted"
+            });
+            modelBuilder.Entity<Status>().HasData(new Status()
+            {
+                Id = 4,
+                Name = "Rejected"
+            });
+
         }
     }
 }

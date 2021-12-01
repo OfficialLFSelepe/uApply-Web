@@ -17,6 +17,7 @@ namespace uApply.Utils.ViewModels.EducationVM
         public IEnumerable<SelectListItem> SchoolLevels { get; set; }
         public IEnumerable<SelectListItem> Schools { get; set; }
         public IEnumerable<SelectListItem> Grades { get; set; }
+        public IEnumerable<SelectListItem> Statuses { get; set; }
 
 
     }

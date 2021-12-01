@@ -42,10 +42,10 @@ namespace uApply.Web.Areas.Admin.Controllers
                     Value = g.Id.ToString()
                 }),
                 SchoolLevels = unitOfWork.SchoolLevel.GetAll().Select(g => new SelectListItem
-                 {
-                     Text = g.Name,
-                     Value = g.Id.ToString()
-                 })
+                {
+                    Text = g.Name,
+                    Value = g.Id.ToString()
+                })
 
             };
 
@@ -91,11 +91,11 @@ namespace uApply.Web.Areas.Admin.Controllers
                     Text = g.Name,
                     Value = g.Id.ToString()
                 });
-                schoolViewModel.Towns= unitOfWork.Town.GetAll().Select(g => new SelectListItem
+                schoolViewModel.Towns = unitOfWork.Town.GetAll().Select(g => new SelectListItem
                 {
                     Text = g.Name,
                     Value = g.Id.ToString()
-                
+
                 });
                 schoolViewModel.SchoolLevels = unitOfWork.SchoolLevel.GetAll().Select(g => new SelectListItem
                 {
@@ -118,7 +118,7 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             var schoolFromDb = unitOfWork.School.GetAll(s => s.Id == id, includeProperties: "Town,SchoolLevel").FirstOrDefault();
 
-            schoolVM.School= schoolFromDb;
+            schoolVM.School = schoolFromDb;
 
             var applications = unitOfWork.SchoolApplication.GetAll(a => a.SchoolId == id, includeProperties: "Learner,Grade");
 
@@ -127,6 +127,16 @@ namespace uApply.Web.Areas.Admin.Controllers
             schoolVM.Applications = applications;
 
             return View(schoolVM);
+        }
+
+        public IActionResult LearnerApplicationView(int applicationId)
+        {
+
+            var application = unitOfWork.SchoolApplication.GetAll(a => a.Id == applicationId, includeProperties: "Learner,Grade,Status").FirstOrDefault();
+
+            if (application == null) return NotFound();
+
+            return View(application);
         }
 
 
@@ -152,6 +162,22 @@ namespace uApply.Web.Areas.Admin.Controllers
             unitOfWork.Save();
 
             return Json(new { success = true, message = "Succesfuly deleted!", id = id });
+
+        }
+
+        [HttpPut]
+        public IActionResult UpdateStatus(int applicationId, int statusId)
+        {
+            var applicationFromDb = unitOfWork.SchoolApplication.Get(applicationId);
+
+            if (applicationFromDb == null) return Json(new { success = false, message = "Failed to update" });
+
+            applicationFromDb.StatusId = statusId;
+
+            unitOfWork.SchoolApplication.Update(applicationFromDb);
+            unitOfWork.Save();
+
+            return Json(new { success = true, message = "Succesfuly updated!"});
 
         }
 

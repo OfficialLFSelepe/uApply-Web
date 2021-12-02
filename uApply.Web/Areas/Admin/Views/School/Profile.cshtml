@@ -23,8 +23,44 @@
     </div>
 </div>
 
-<h3 class="text-center text-muted text-uppercase mt-5">Learner Applications Received</h3>
+<div class="row my-4">
+    <div class="col-3">
+
+        <div class="card shadow p-3 bg-dark text-info d-flex align-items-center justify-content-center">
+            <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Total Applications</p>
+            <p class="font-weight-bold mt-1">@(applications.ToList().Count)</p>
+        </div>
+
+    </div>
+    <div class="col-3">
+
+        <div class="card shadow p-3 bg-dark text-warning d-flex align-items-center justify-content-center">
+            <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Not Attended</p>
+            <p class="font-weight-bold mt-1">@applications.Where(s => s.StatusId == 1).ToList().Count</p>
+        </div>
+
+    </div>
     
+    <div class="col-3">
+
+        <div class="card shadow p-3 bg-dark text-success d-flex align-items-center justify-content-center">
+            <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Accepted</p>
+            <p class="font-weight-bold mt-1">@applications.Where(s => s.StatusId == 3).ToList().Count</p>
+        </div>
+
+    </div>
+    
+    <div class="col-3">
+
+        <div class="card shadow p-3 bg-dark text-danger d-flex align-items-center justify-content-center">
+            <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Rejected</p>
+            <p class="font-weight-bold mt-1">@applications.Where(s => s.StatusId == 4).ToList().Count</p>
+        </div>
+
+    </div>
+</div>    
+
+
 @if(applications != null)
 {
     <div class="card shadow p-3">

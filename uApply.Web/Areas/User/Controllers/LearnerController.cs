@@ -66,10 +66,20 @@ namespace uApply.Web.Areas.User.Controllers
                 {
                     Text = g.Name,
                     Value = g.Id.ToString()
+                }),
+                Districts = unitOfWork.District.GetAll().Select(g => new SelectListItem
+                {
+                    Text = g.Name,
+                    Value = g.Id.ToString()
+                }),
+                Towns = unitOfWork.Town.GetAll().Select(g => new SelectListItem
+                {
+                    Text = g.Name,
+                    Value = g.Id.ToString()
                 })
 
 
-            };
+        };
 
             if (parentId != null) learnerVM.Learner.ParentId = parentId.GetValueOrDefault();
 
@@ -92,14 +102,14 @@ namespace uApply.Web.Areas.User.Controllers
 
                 if (learnerViewModel.Learner.Id == 0)
                 {
-                    learnerViewModel.Learner.TownId = 1;
+
                     learnerViewModel.Learner.GradeId = 1;
                     unitOfWork.Learner.Add(learnerViewModel.Learner);
 
                 }
                 else
                 {
-                    learnerViewModel.Learner.TownId = 1;
+                    
                     unitOfWork.Learner.Update(learnerViewModel.Learner);
                 }
                 unitOfWork.Save();
@@ -128,6 +138,16 @@ namespace uApply.Web.Areas.User.Controllers
                     Value = g.Id.ToString()
                 });
                 learnerViewModel.Languages = unitOfWork.Language.GetAll().Select(g => new SelectListItem
+                {
+                    Text = g.Name,
+                    Value = g.Id.ToString()
+                });
+                learnerViewModel.Districts = unitOfWork.District.GetAll().Select(g => new SelectListItem
+                {
+                    Text = g.Name,
+                    Value = g.Id.ToString()
+                });
+                learnerViewModel.Towns = unitOfWork.Town.GetAll().Select(g => new SelectListItem
                 {
                     Text = g.Name,
                     Value = g.Id.ToString()

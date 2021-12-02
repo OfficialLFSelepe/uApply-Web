@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using uApply.Data.Models.Education;
+using uApply.Data.Models.Location;
 
 namespace uApply.Utils.ViewModels.EducationVM
 {
@@ -19,6 +20,8 @@ namespace uApply.Utils.ViewModels.EducationVM
         public IEnumerable<SelectListItem> Grades { get; set; }
         public IEnumerable<SelectListItem> Statuses { get; set; }
 
+        public District District { get; set; }
+        public Town Town { get; set; }
 
     }
 }

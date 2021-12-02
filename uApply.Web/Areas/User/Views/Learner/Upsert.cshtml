@@ -1,4 +1,5 @@
-﻿@model LearnerViewModel
+﻿@using uApply.Data.Models.Location
+@model LearnerViewModel
 @{
     var title = Model.Learner.Id == 0 ? "Adding Learner" : "Updating Learner";
 }
@@ -16,6 +17,7 @@
                 <div class="card-body">
                     <input type="hidden" asp-for="Learner.Id"  />     
                     <input type="hidden" asp-for="Learner.ParentId"  />     
+                    <div asp-validation-summary=ModelOnly></div>
         
                     <h4 class="text-dark text-center text-uppercase mb-3">Personal Details</h4>
                                 
@@ -24,6 +26,7 @@
                             <div class="form-group">
                                 <label asp-for="Learner.FullNames" class="text-muted"></label>
                                 <input  asp-for="Learner.FullNames" type="text" class="form-control" />     
+                                <span asp-validation-for="Learner.FullNames" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -33,6 +36,8 @@
                             <div class="form-group">
                                 <label asp-for="Learner.Surname" class="text-muted"></label>
                                 <input asp-for="Learner.Surname" type="text" class="form-control" />
+                                <span asp-validation-for="Learner.Surname" class="text-danger"></span>
+
                             </div>
                         </div>
                     </div>                   
@@ -127,52 +132,51 @@
                     </div>
 
                     <hr>
+                    *@
         
-                  @*  <h4 class="text-info text-center text-uppercase mb-3">Residential Address</h4>
+                    <hr/>
+                    <h4 class="text-dark text-center text-uppercase mb-3">Residential Address</h4>
                     
                    <div class="form-row">
         
                         <div class="col-6">
                             <div class="form-group">
         
-                                <label for="street" class="text-muted"><strong>Street</strong></label>
-                                <input type="text" class="form-control mb-3" id="street"
-                                        />
+                                <label asp-for="Learner.StreetAddress" class="text-muted"><strong>Street</strong></label>
+                                <input asp-for="Learner.StreetAddress" type="text" class="form-control mb-3"/>
                                 
                             </div>
                     
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="complex" class="text-muted"><strong>Building/Complex</strong></label>
-                                <input type="text" class="form-control mb-3" id="complex"
-                                        />
-                        
+                               <div class="form-group">
+                                <label asp-for="Learner.Surburb" class="text-muted"><strong>Suburb</strong></label>
+                                <input asp-for="Learner.Surburb" type="text" class="form-control mb-3"/>
+                            </div>
                             </div>
                         </div>
                     </div>
         
                     
                     <div class="form-row">
+                     
+                        <div class="col-4">
+                            <label  class="text-muted">District</label>
+                            @Html.DropDownListFor( c => c.District.Id, Model.Districts, "-- Select District --",
+                                    new {@class = "form-control"})   
+                        </div>
+
+                          <div class="col-4">
+                            <label asp-for="Learner.Town" class="text-muted"></label>
+                            @Html.DropDownListFor( c => c.Learner.TownId, Model.Towns, "-- Select Town --",
+                                    new {@class = "form-control"})   
+                        </div>
+                     
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="suburb" class="text-muted"><strong>Suburb</strong></label>
-                                <input type="text" class="form-control mb-3" id="suburb"
-                                        />
-                            </div>
-                        </div>
-        
-                        <div class="col-4">
-                            <label for="town" class="text-muted"><strong>City/Town</strong></label>
-                            <input type="text" class="form-control mb-3" id="town"
-                                    />    
-                        </div>
-                        
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="postal" class="text-muted"><strong>Postal Code</strong></label>
-                                <input type="text" class="form-control" id="postal"
-                                        />
+                                <label asp-for="Learner.PostalCode" class="text-muted"><strong>Postal Code</strong></label>
+                                <input asp-for="Learner.PostalCode" type="text" class="form-control"/>
                             </div>    
                         </div>
                         
@@ -182,12 +186,11 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="province" class="text-muted"><strong>Province</strong></label>
-                                <input type="text" placeholder="Free State" disabled class="form-control" id="province"
-                                        />
+                                <input type="text" value="Free State" placeholder="Free State" disabled class="form-control" id="province"/>
                             </div>
                         </div>
                     </div> 
-                    *@
+                    
                     <hr>
                     <h4 class="text-dark text-center text-uppercase mb-3">Contact Details</h4>
                     
@@ -218,3 +221,6 @@
         
     </div>
 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

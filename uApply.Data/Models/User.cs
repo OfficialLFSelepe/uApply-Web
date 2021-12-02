@@ -14,6 +14,9 @@ namespace uApply.Data.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
+
+        [Required]
+        [DisplayName("Full Names")]
         public string FullNames { get; set; }
         public string Surname { get; set; }
         public long IdNumber { get; set; }

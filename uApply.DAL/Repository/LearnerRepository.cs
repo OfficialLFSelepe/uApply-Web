@@ -32,7 +32,11 @@ namespace uApply.DAL.Repository
                 learnerFromDb.PhoneNumber = learner.PhoneNumber;                
                 learnerFromDb.NationalityId = learner.NationalityId;
                 learnerFromDb.LanguageId = learner.LanguageId;
-                learnerFromDb.IsDisabled = learner.IsDisabled;
+                learnerFromDb.IsDisabled = learner.IsDisabled;                
+                learnerFromDb.StreetAddress = learner.StreetAddress;                
+                learnerFromDb.Surburb = learner.Surburb;                
+                learnerFromDb.PostalCode = learner.PostalCode;                
+                learnerFromDb.TownId = learner.TownId;
 
             }
         }

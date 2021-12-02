@@ -15,26 +15,31 @@
                     <input type="hidden" asp-for="SchoolApplication.LearnerId"  />     
                     <input type="hidden" asp-for="ParentId"  />     
                      
-                                    
-                    <div class="form-row">
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label asp-for="SchoolApplication.School" class="text-muted"></label>
-                                  @Html.DropDownListFor( c => c.SchoolApplication.SchoolId, Model.Schools, "-- Select School --",
-                                    new {@class = "form-control"})                                
-                            </div>
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
+                            
+                    <div class="form-group">
+                                <label  class="text-muted">District</label>
+                                @Html.DropDownListFor( c => c.District.Id, Model.Districts, "-- Select District --",
+                                    new {@class = "form-control"})                           
+                    </div>
+
+                   <div class="form-group">
+                               <label asp-for="Town" class="text-muted">Town</label>
+                                @Html.DropDownListFor( c => c.Town.Id, Model.Towns, "-- Select Town --",
+                                    new {@class = "form-control"})   
+                   </div>                          
+                                          
+                    <div class="form-group">
+                        <label asp-for="SchoolApplication.School" class="text-muted"></label>
+                            @Html.DropDownListFor( c => c.SchoolApplication.SchoolId, Model.Schools, "-- Select School --",
+                            new {@class = "form-control"})                                
+                    </div>
+
+                    <div class="form-group">
                                 <label asp-for="SchoolApplication.Grade" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.SchoolApplication.GradeId, Model.Grades, "-- Select Grade --",
                                     new {@class = "form-control"})
-                            </div>
-                        </div>                        
-                    </div>                
+                    </div>                         
+                                  
                                                                            
                 <!-- Card Footer -->
                 <div class="card-footer m-0">

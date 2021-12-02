@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using uApply.Data.Models;
 using uApply.Data.Models.Education;
+using uApply.Data.Models.Location;
 
 namespace uApply.Utils.ViewModels.UserVM
 {
@@ -19,6 +20,10 @@ namespace uApply.Utils.ViewModels.UserVM
         public IEnumerable<SelectListItem> Races { get; set; }
         public IEnumerable<SelectListItem> Nationalities { get; set; }
         public IEnumerable<SelectListItem> Languages { get; set; }
+        public IEnumerable<SelectListItem> Districts { get; set; }
+        public IEnumerable<SelectListItem> Towns { get; set; }
+
+        public District District { get; set; }
 
     }
 }

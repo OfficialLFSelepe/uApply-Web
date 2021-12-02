@@ -1,0 +1,200 @@
+﻿@page
+@model RegisterModel
+@{
+    //ViewData["Title"] = "Register";
+}
+
+@*<h1>@ViewData["Title"]</h1>*@
+
+
+<div class="container">
+    <div class="card shadow my-3">
+        <div class="card-header py-3">
+                <p class="text-center text-dark m-0 font-weight-bold">USER REGISRTRATION</p>
+            </div>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div class="card-body">
+            
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <h3 class="text-center text-dark m-0 font-weight-bold">PERSONAL DETAILS</h3>
+               <hr />
+        <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.FullNames"></label>
+                    <input asp-for="Input.FullNames" class="form-control" />
+                    <span asp-validation-for="Input.FullNames" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Surname"></label>
+                    <input asp-for="Input.Surname" class="form-control" />
+                    <span asp-validation-for="Input.Surname" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Input.Title"></label>
+                    <input asp-for="Input.Title" class="form-control" />
+                    <span asp-validation-for="Input.Title" class="text-danger"></span>
+                    @*<label asp-for="User.Title"></label>
+                     @Html.DropDownListFor( c => c.User.Title, Model.Titles, "-- Select Title --",
+                                    new {@class = "form-control"})    
+                    <span asp-validation-for="User.Title" class="text-danger"></span>*@
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Input.Gender"></label>
+                    <input asp-for="Input.Gender" class="form-control" />
+                    <span asp-validation-for="Input.Gender" class="text-danger"></span>
+                    @* <label asp-for="User.Gender"></label>
+                     @Html.DropDownListFor( c => c.User.Gender, Model.Genders, "-- Select Gender --",
+                                    new {@class = "form-control"})    
+                    <span asp-validation-for="User.Gender" class="text-danger"></span>*@
+                </div>
+            </div><div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Nationality"></label>
+                    <input asp-for="Input.Nationality" class="form-control" />
+                    <span asp-validation-for="Input.Nationality" class="text-danger"></span>
+                    @* <label asp-for="User.Nationality"></label>
+                     @Html.DropDownListFor( c => c.User.Nationality, Model.Nationalities, "-- Select Nationality --",
+                                    new {@class = "form-control"})    
+                    <span asp-validation-for="User.Nationality" class="text-danger"></span>*@
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+             <div class="col-md-8">
+                <div class="form-group">
+                    <label asp-for="Input.IdNumber"></label>
+                    <input asp-for="Input.IdNumber" class="form-control" />
+                    <span asp-validation-for="Input.IdNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Input.Race"></label>
+                    <input asp-for="Input.Race" class="form-control" />
+                    <span asp-validation-for="Input.Race" class="text-danger"></span>
+                     @* <label asp-for="User.Race"></label>
+                     @Html.DropDownListFor( c => c.User.Race, Model.Races, "-- Select Race --",
+                                    new {@class = "form-control"})    
+                    <span asp-validation-for="User.Race" class="text-danger"></span>*@
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.HomeLanguage"></label>
+                    <input asp-for="Input.HomeLanguage" class="form-control" />
+                    <span asp-validation-for="Input.HomeLanguage" class="text-danger"></span>
+                    @* <label asp-for="User.Language"></label>
+                     @Html.DropDownListFor( c => c.User.Language, Model.Languages, "-- Select Home Language --",
+                                    new {@class = "form-control"})    
+                    <span asp-validation-for="User.Language" class="text-danger"></span>*@
+                </div>
+            </div>            
+        </div>
+         <hr />
+        <h3 class="text-center text-dark m-0 font-weight-bold">RESIDENTIAL ADDRESS</h3>
+         <hr />
+
+         <div class="row"> 
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Input.StreetAddress"></label>
+                    <input asp-for="Input.StreetAddress" class="form-control" />
+                    <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+                </div>
+            </div>             
+         </div>
+         
+         <div class="row"> 
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Input.Town"></label>
+                    <input asp-for="Input.Town" class="form-control" />
+                    <span asp-validation-for="Input.Town" class="text-danger"></span>
+                </div>
+            </div> 
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Input.Surburb"></label>
+                    <input asp-for="Input.Surburb" class="form-control" />
+                    <span asp-validation-for="Input.Surburb" class="text-danger"></span>
+                </div>
+            </div>   
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Input.PostalCode"></label>
+                    <input asp-for="Input.PostalCode" class="form-control" />
+                    <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                </div>
+            </div>            
+         </div>
+
+         <hr />
+        <h3 class="text-center text-dark m-0 font-weight-bold">CONTACT DETAILS</h3>
+         <hr />
+
+        <div class="row"> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+            </div> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.PhoneNumber"></label>
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+         </div>
+         <hr />
+        <div class="row"> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+            </div>            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+         </div>
+
+         <hr />
+         <button type="submit" class="btn btn-dark btn-block">Register</button>
+         </div> 
+        </form>
+       </div> 
+</div>
+
+</div>
+
+
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -31,22 +31,22 @@
                           <i class="icon ion-md-people mr-2"></i>  Parents
                         </a>
                     </li>
-                    <li>
+                    @*<li>
                         <a class="nav-link text-white nav-link-hover mr-2" asp-area="Admin" asp-controller="School" asp-action="Index">
                           <i class="icon ion-md-school mr-2"></i>  Schools
                         </a>
-                    </li>
+                    </li>*@
                     
-                    @*<li>
-                        <a class="nav-link text-white nav-link-hover mr-2">
+                    <li>
+                        <a class="nav-link text-white nav-link-hover mr-2" asp-area="User" asp-action="Index">
                           <i class="icon ion-md-log-in mr-2"></i>Login
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link btn btn-primary">
+                        <a class="nav-link btn btn-info" asp-area="Identity" asp-controller="Account" asp-action="Register">
                           <i class="icon ion-md-book mr-2"></i>Sign-up
                         </a>
-                    </li>*@
+                    </li>
                 </ul>
  
               </div>

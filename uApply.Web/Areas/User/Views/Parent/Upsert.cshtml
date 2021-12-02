@@ -38,8 +38,7 @@
                             <div class="form-group">
                                 <label asp-for="Parent.Title" class="text-muted"></label>
                                   @Html.DropDownListFor( c => c.Parent.TitleId, Model.Titles, "-- Select Title --",
-                                    new {@class = "form-control"})
-                                
+                                    new {@class = "form-control"})                                
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.

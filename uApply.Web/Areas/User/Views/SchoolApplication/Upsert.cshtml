@@ -7,7 +7,7 @@
 
          <div class="card shadow my-3">
             <div class="card-header py-3">
-                <p class="text-center text-dark m-0 font-weight-bold">Learner Applicaation</p>
+                <p class="text-center text-dark m-0 font-weight-bold">Learner Application</p>
             </div>
             <form  method="post">
                 <div class="card-body">
@@ -19,7 +19,7 @@
                     <div class="form-group">
                                 <label  class="text-muted">District</label>
                                 @Html.DropDownListFor( c => c.District.Id, Model.Districts, "-- Select District --",
-                                    new {@class = "form-control"})                           
+                                    new {@class = "form-control"})                                     
                     </div>
 
                    <div class="form-group">
@@ -31,13 +31,15 @@
                     <div class="form-group">
                         <label asp-for="SchoolApplication.School" class="text-muted"></label>
                             @Html.DropDownListFor( c => c.SchoolApplication.SchoolId, Model.Schools, "-- Select School --",
-                            new {@class = "form-control"})                                
+                            new {@class = "form-control"})  
+                            <span asp-validation-for="SchoolApplication.SchoolId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                                 <label asp-for="SchoolApplication.Grade" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.SchoolApplication.GradeId, Model.Grades, "-- Select Grade --",
                                     new {@class = "form-control"})
+                                    <span asp-validation-for="SchoolApplication.GradeId" class="text-danger"></span>
                     </div>                         
                                   
                                                                            
@@ -51,3 +53,6 @@
         
     </div>
 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

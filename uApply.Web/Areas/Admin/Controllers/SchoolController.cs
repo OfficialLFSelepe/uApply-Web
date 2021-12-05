@@ -52,7 +52,8 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             if (id == null) return View(schoolViewModel);
 
-            schoolViewModel.School = unitOfWork.School.Get(id.GetValueOrDefault());
+            schoolViewModel.School = unitOfWork.School.GetAll(s => s.Id == id.GetValueOrDefault(), includeProperties: "Town").FirstOrDefault();
+            schoolViewModel.District = unitOfWork.District.Get(schoolViewModel.School.Town.DistrictId);
 
             if (schoolViewModel.School == null) return NotFound();
 
@@ -179,6 +180,14 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             return Json(new { success = true, message = "Succesfuly updated!"});
 
+        }
+
+
+        [HttpGet]
+        public IActionResult GetSchools()
+        {
+            var schools = unitOfWork.School.GetAll();
+            return Json(new { data = schools, success = true });
         }
 
         //[HttpGet("{id:int}")]

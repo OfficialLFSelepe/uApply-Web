@@ -164,7 +164,7 @@
                         <div class="col-4">
                             <label  class="text-muted">District</label>
                             @Html.DropDownListFor( c => c.District.Id, Model.Districts, "-- Select District --",
-                                    new {@class = "form-control"})   
+                                    new {@class = "form-control", @onchange = "onDistrictChange()"})   
                         </div>
 
                           <div class="col-4">
@@ -223,4 +223,5 @@
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial"/>
+    <script src="~/js/learners.js"></script>
 }

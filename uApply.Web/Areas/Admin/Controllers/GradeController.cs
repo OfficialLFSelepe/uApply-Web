@@ -63,5 +63,12 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             return View(grade);
         }
+
+        [HttpGet]
+        public IActionResult GetGrades()
+        {
+            var grades = unitOfWork.Grade.GetAll();
+            return Json(new { data = grades, success = true });
+        }
     }
 }

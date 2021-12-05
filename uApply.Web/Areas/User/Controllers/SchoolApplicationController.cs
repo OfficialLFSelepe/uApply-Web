@@ -4,6 +4,7 @@ using uApply.DAL.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using uApply.Utils.ViewModels.EducationVM;
 using uApply.Data.Models.Education;
+using System;
 
 namespace uApply.Web.Areas.User.Controllers
 {
@@ -51,7 +52,7 @@ namespace uApply.Web.Areas.User.Controllers
                     Text = g.Name,
                     Value = g.Id.ToString()
                 }),
-                Grades = unitOfWork.Grade.GetAll().Select(g => new SelectListItem
+                Grades = unitOfWork.Grade.GetAll().OrderBy(g => Convert.ToInt32(g.Name)).Select(g => new SelectListItem
                 {
                     Text = g.Name,
                     Value = g.Id.ToString()

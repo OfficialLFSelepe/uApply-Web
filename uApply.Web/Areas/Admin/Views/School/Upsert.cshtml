@@ -35,14 +35,21 @@
                     <div class="form-row">
                         <div class="col-3">
                             <div class="form-group">
+                                <label asp-for="District" class="text-muted"></label>
+                                  @Html.DropDownListFor( c => c.District.Id, Model.Districts, "-- Select District --",
+                                    new {@class = "form-control", @onchange = "onDistrictChange()"})
+                                
+                            </div>
+
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
                                 <label asp-for="School.Town" class="text-muted"></label>
                                   @Html.DropDownListFor( c => c.School.TownId, Model.Towns, "-- Select Town --",
                                     new {@class = "form-control"})
                                 
                             </div>
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
+
                         </div>
                         <div class="col-3">
                             <div class="form-group">
@@ -230,3 +237,6 @@
         
     </div>
 
+@section Scripts{
+    <script src="~/js/school.js"></script>
+}

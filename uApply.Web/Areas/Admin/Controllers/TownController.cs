@@ -63,5 +63,12 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             return View(town);
         }
+
+        [HttpGet]
+        public IActionResult GetTowns()
+        {
+            var towns = unitOfWork.Town.GetAll();
+            return Json(new {data = towns, success = true});
+        }
     }
 }

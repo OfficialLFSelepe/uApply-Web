@@ -1,8 +1,10 @@
 ﻿var dataTable;
+var towns;
 
 $(document).ready(() => {
   /*  var parentId = Number(document.getElementById('learnerTable').getAttribute('data-parent-id'));
     loadTableData(parentId);*/
+    onDomLoaded();
 });
 
 var loadTableData = (parentId) => {
@@ -32,7 +34,7 @@ var loadTableData = (parentId) => {
     })
 }
 
-var Delete = (url) => {
+var  Delete = (url) => {
     swal({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover",
@@ -56,4 +58,57 @@ var Delete = (url) => {
             });
         }
     });
+}
+
+var onDistrictChange = () => {
+    var id = +document.getElementById('District_Id').value;
+
+    filterTownsByDistrict(id);
+}
+
+var filterTownsByDistrict = (districtId) => {
+
+    if (!towns) return;
+
+    var filteredTowns = towns.filter(town => town.districtId === districtId);
+
+    populateOptions(filteredTowns, 'Learner_TownId');
+
+}
+
+var populateOptions = (options, elementId) => {
+
+    let selectOptions = '';
+    options.forEach(o => {
+        selectOptions += `<option value='${o.id}'>${o.name}</option> \n`
+    });
+
+    document.getElementById(elementId).innerHTML = selectOptions;
+}
+
+
+function onDomLoaded() {
+ 
+    api("/Admin/Town/GetTowns").then(result => {
+        towns = result.data;
+    }).catch(err => console.log(err))
+
+}
+
+var api = async (url) => {
+    return new Promise((resolve, reject) => {
+
+        const request = new XMLHttpRequest();
+
+        request.open('GET', url, true);
+
+        request.setRequestHeader('Content-Type', 'application/json');
+
+        request.onload = function () {
+            resolve(JSON.parse(request.response));
+        };
+        request.onerror = (error) => reject(error);
+        request.send();
+
+    })
 }

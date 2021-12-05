@@ -28,7 +28,7 @@
 
         <div class="card shadow p-3 bg-dark text-info d-flex align-items-center justify-content-center">
             <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Total Applications</p>
-            <p class="font-weight-bold mt-1">@(applications.ToList().Count)</p>
+            <p class="font-weight-bold mt-1">@(applications != null? applications.ToList().Count : 0)</p>
         </div>
 
     </div>
@@ -36,7 +36,7 @@
 
         <div class="card shadow p-3 bg-dark text-warning d-flex align-items-center justify-content-center">
             <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Not Attended</p>
-            <p class="font-weight-bold mt-1">@applications.Where(s => s.StatusId == 1).ToList().Count</p>
+            <p class="font-weight-bold mt-1">@(applications != null ? applications.Where(s => s.StatusId == 1).ToList().Count : 0 )</p>
         </div>
 
     </div>
@@ -45,7 +45,7 @@
 
         <div class="card shadow p-3 bg-dark text-success d-flex align-items-center justify-content-center">
             <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Accepted</p>
-            <p class="font-weight-bold mt-1">@applications.Where(s => s.StatusId == 3).ToList().Count</p>
+            <p class="font-weight-bold mt-1">@(applications != null ? applications.Where(s => s.StatusId == 3).ToList().Count : 0)</p>
         </div>
 
     </div>
@@ -54,7 +54,7 @@
 
         <div class="card shadow p-3 bg-dark text-danger d-flex align-items-center justify-content-center">
             <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Rejected</p>
-            <p class="font-weight-bold mt-1">@applications.Where(s => s.StatusId == 4).ToList().Count</p>
+            <p class="font-weight-bold mt-1">@( applications != null ? applications.Where(s => s.StatusId == 4).ToList().Count : 0)</p>
         </div>
 
     </div>
@@ -106,7 +106,7 @@
 }
 else
 {
-    <h4 class="text-center text-danger">No Learners</h4>
+    <h4 class="text-center text-danger">No Applications</h4>
 }
 
 

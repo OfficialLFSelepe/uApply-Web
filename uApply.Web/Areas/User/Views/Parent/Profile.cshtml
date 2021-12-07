@@ -80,3 +80,22 @@ else
 @section Scripts{
     <script src="~/js/parent.js"></script>
 }
+
+@if (ViewBag.JavaScriptFunction != null)
+{
+    <script type="text/javascript">
+        function setLoggedUser(userId, role){
+
+            var user = {
+                userId: userId,
+                role: role
+            }
+
+            localStorage.setItem("loggedUser", JSON.stringify(user));
+
+        }
+
+        @Html.Raw(ViewBag.JavaScriptFunction)
+    </script>
+
+}

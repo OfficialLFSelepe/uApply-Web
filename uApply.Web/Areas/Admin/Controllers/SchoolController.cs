@@ -121,6 +121,8 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             schoolVM.School = schoolFromDb;
 
+            ViewBag.JavaScriptFunction = string.Format($"setLoggedUser('{schoolFromDb.Id}', 'SCHOOL');");
+
             var applications = unitOfWork.SchoolApplication.GetAll(a => a.SchoolId == id, includeProperties: "Learner,Grade");
 
             if (!applications.Any()) return View(schoolVM);

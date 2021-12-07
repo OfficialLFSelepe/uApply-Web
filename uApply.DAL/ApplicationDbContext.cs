@@ -242,7 +242,9 @@ namespace uApply.DAL
                 Name = "Bloemfontein High School",
                 EmisNumber = 896541231,
                 TownId = 1,
-                SchoolLevelId = 2
+                SchoolLevelId = 2,
+                Email = "bloem@gmail.com",
+                Password = "pass123"
             });
             modelBuilder.Entity<School>().HasData(new School()
             {
@@ -250,7 +252,9 @@ namespace uApply.DAL
                 Name = "HTS louis Botha High School",
                 EmisNumber = 123456789,
                 TownId = 1,
-                SchoolLevelId = 2
+                Email = "botha@gmail.com",
+                Password = "pass123",
+                SchoolLevelId = 2,
             });
             modelBuilder.Entity<School>().HasData(new School()
             {
@@ -258,7 +262,9 @@ namespace uApply.DAL
                 Name = "Navalsig High School",
                 EmisNumber = 456985213,
                 TownId = 1,
-                SchoolLevelId = 2
+                SchoolLevelId = 2,
+                Email = "navalsig@gmail.com",
+                Password = "pass123",
             });
             modelBuilder.Entity<School>().HasData(new School()
             {
@@ -266,7 +272,9 @@ namespace uApply.DAL
                 Name = "Rose View Primary School",
                 EmisNumber = 6458322544,
                 TownId = 1,
-                SchoolLevelId = 1
+                SchoolLevelId = 1,
+                Email = "rose@gmail.com",
+                Password = "pass123",
             });
             modelBuilder.Entity<School>().HasData(new School()
             {
@@ -274,7 +282,9 @@ namespace uApply.DAL
                 Name = "Castle Bridge Primary School",
                 EmisNumber = 7532156498,
                 TownId = 1,
-                SchoolLevelId = 1
+                SchoolLevelId = 1,
+                Email = "castle@gmail.com",
+                Password = "pass123"
             });
             modelBuilder.Entity<School>().HasData(new School()
             {
@@ -282,7 +292,9 @@ namespace uApply.DAL
                 Name = "Mangaung Primary School",
                 EmisNumber = 9632587412,
                 TownId = 1,
-                SchoolLevelId = 1
+                SchoolLevelId = 1,
+                Email = "mangaung@gmail.com",
+                Password = "pass123",
             });
 
 

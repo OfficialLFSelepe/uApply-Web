@@ -109,7 +109,21 @@ else
     <h4 class="text-center text-danger">No Applications</h4>
 }
 
+@if (ViewBag.JavaScriptFunction != null)
+{
+    <script type="text/javascript">
+        function setLoggedUser(userId, role){
 
-@*@section Scripts{
-    <script src="~/js/parent.js"></script>
-}*@
+            var user = {
+                userId: userId,
+                role: role
+            }
+
+            localStorage.setItem("loggedUser", JSON.stringify(user));
+
+        }
+
+        @Html.Raw(ViewBag.JavaScriptFunction)
+    </script>
+
+}

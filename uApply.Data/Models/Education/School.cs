@@ -16,6 +16,11 @@ namespace uApply.Data.Models.Education
 
         [Display(Name =  "School Name")]
         public string Name { get; set; }
+
+        public string Email { get; set; }
+        
+        public string Password { get; set; }
+
         public long EmisNumber { get; set; }
 
         [ForeignKey("TownId")]

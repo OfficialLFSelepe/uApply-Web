@@ -26,27 +26,37 @@
                           <i class="icon ion-md-home mr-2"></i>Home
                         </a>
                     </li>
-                    <li>
+                    <li id="parentsLink" style="display: none">
                         <a class="nav-link text-white nav-link-hover mr-2" asp-area="User" asp-controller="Parent" asp-action="Index">
                           <i class="icon ion-md-people mr-2"></i>  Parents
                         </a>
                     </li>
-                    <li>
+                    <li id="schoolsLink" style="display: none">
                         <a class="nav-link text-white nav-link-hover mr-2" asp-area="Admin" asp-controller="School" asp-action="Index">
                           <i class="icon ion-md-school mr-2"></i>  Schools
                         </a>
                     </li>
                     
-                    @*<li>
-                        <a class="nav-link text-white nav-link-hover mr-2">
+                    <li id="loginLink">
+                        <a asp-area="User" asp-controller="Account" asp-action="Login" class="nav-link text-white nav-link-hover mr-2">
                           <i class="icon ion-md-log-in mr-2"></i>Login
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link btn btn-primary">
-                          <i class="icon ion-md-book mr-2"></i>Sign-up
+                    <li id="registerLink">
+                        <a asp-area="User" asp-controller="Account" asp-action="Index" class="nav-link text-white btn btn-success">
+                          <i class="icon ion-md-book mr-2"></i>Register
                         </a>
-                    </li>*@
+                    </li>
+                    <li id="loggedUser" style="display: none">
+                        <a class="nav-link text-white">
+                          <i class="icon ion-md-person mr-2"></i> <span>Username</span>
+                        </a>
+                    </li>
+                    <li id="logout" style="display: none">
+                        <a class="nav-link text-white" onclick="logout()">
+                          <i class="icon ion-md-log-out mr-2"></i> Logout
+                        </a>
+                    </li>
                 </ul>
  
               </div>

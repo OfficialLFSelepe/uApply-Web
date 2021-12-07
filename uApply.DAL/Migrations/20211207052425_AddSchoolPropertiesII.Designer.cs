@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using uApply.DAL;
 
 namespace uApply.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211207052425_AddSchoolPropertiesII")]
+    partial class AddSchoolPropertiesII
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,60 +316,48 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "bloem@gmail.com",
                             EmisNumber = 896541231L,
                             Name = "Bloemfontein High School",
-                            Password = "pass123",
                             SchoolLevelId = 2,
                             TownId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Email = "botha@gmail.com",
                             EmisNumber = 123456789L,
                             Name = "HTS louis Botha High School",
-                            Password = "pass123",
                             SchoolLevelId = 2,
                             TownId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Email = "navalsig@gmail.com",
                             EmisNumber = 456985213L,
                             Name = "Navalsig High School",
-                            Password = "pass123",
                             SchoolLevelId = 2,
                             TownId = 1
                         },
                         new
                         {
                             Id = 4,
-                            Email = "rose@gmail.com",
                             EmisNumber = 6458322544L,
                             Name = "Rose View Primary School",
-                            Password = "pass123",
                             SchoolLevelId = 1,
                             TownId = 1
                         },
                         new
                         {
                             Id = 5,
-                            Email = "castle@gmail.com",
                             EmisNumber = 7532156498L,
                             Name = "Castle Bridge Primary School",
-                            Password = "pass123",
                             SchoolLevelId = 1,
                             TownId = 1
                         },
                         new
                         {
                             Id = 6,
-                            Email = "mangaung@gmail.com",
                             EmisNumber = 9632587412L,
                             Name = "Mangaung Primary School",
-                            Password = "pass123",
                             SchoolLevelId = 1,
                             TownId = 1
                         });
@@ -411,7 +401,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 29, 28, 190, DateTimeKind.Unspecified).AddTicks(7028), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 24, 25, 31, DateTimeKind.Unspecified).AddTicks(580), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 1,
                             LearnerId = 1,
                             SchoolId = 1,
@@ -420,7 +410,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 29, 28, 191, DateTimeKind.Unspecified).AddTicks(594), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 24, 25, 31, DateTimeKind.Unspecified).AddTicks(4472), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 1,
                             LearnerId = 1,
                             SchoolId = 2,
@@ -429,7 +419,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 29, 28, 191, DateTimeKind.Unspecified).AddTicks(634), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 24, 25, 31, DateTimeKind.Unspecified).AddTicks(4528), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 1,
                             LearnerId = 1,
                             SchoolId = 3,
@@ -438,7 +428,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 29, 28, 191, DateTimeKind.Unspecified).AddTicks(659), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 24, 25, 31, DateTimeKind.Unspecified).AddTicks(4568), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 4,
                             LearnerId = 1,
                             SchoolId = 4,
@@ -447,7 +437,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 29, 28, 191, DateTimeKind.Unspecified).AddTicks(683), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 24, 25, 31, DateTimeKind.Unspecified).AddTicks(4605), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 1,
                             LearnerId = 1,
                             SchoolId = 5,
@@ -456,7 +446,7 @@ namespace uApply.DAL.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 29, 28, 191, DateTimeKind.Unspecified).AddTicks(712), new TimeSpan(0, 2, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2021, 12, 7, 7, 24, 25, 31, DateTimeKind.Unspecified).AddTicks(4647), new TimeSpan(0, 2, 0, 0, 0)),
                             GradeId = 5,
                             LearnerId = 1,
                             SchoolId = 6,

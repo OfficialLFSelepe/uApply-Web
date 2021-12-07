@@ -7,14 +7,12 @@
 
          <div class="card shadow my-3">
             <div class="card-header py-3">
-                <p class="text-center text-dark m-0 font-weight-bold">Adding New School</p>
+                <p class="text-center text-dark m-0 font-weight-bold">Registering School</p>
             </div>
             <form  method="post">
                 <div class="card-body">
                     <input type="hidden" asp-for="School.Id"  />     
-
-                    <h4 class="text-info text-center text-uppercase mb-3">Personal Details</h4>
-                                
+            
                     <div class="form-row">
                         <div class="col">
                             <div class="form-group">
@@ -183,24 +181,23 @@
                         </div>
                     </div> 
                     *@
-                   @* <hr>
-                    <h4 class="text-info text-center text-uppercase mb-3">Contact Details</h4>
                     
                     <div class="form-row">
                         
                         <div class="col">
                             <div class="form-group">
-                                <label asp-for="Parent.Email" class="text-muted"></label>
-                                <input asp-for="Parent.Email" type="text" class="form-control" />
+                                <label asp-for="School.Email" class="text-muted"></label>
+                                <input asp-for="School.Email" type="text" class="form-control" />
                             </div>
-                        </div>*@
-                        @*<div class="col">
+                        </div>
+                        <div class="col">
                             <div class="form-group">
-                                <label for="confirm_email" class="text-muted"><strong>Confirm Email</strong></label>
-                                <input type="email" class="form-control" id="confirm_email"/>
+                                <label asp-for="School.Password" class="text-muted"></label>
+                                <input asp-for="School.Password" type="password" class="form-control"/>
                             </div>
-                        </div>*@
-                    @*</div>*@
+                        </div>
+                    
+                    </div>
         
                     @*<div class="form-row">
                         
@@ -230,7 +227,7 @@
                 </div>
                 <!-- Card Footer -->
                 <div class="card-footer m-0">
-                    <button type="submit" class="btn btn-dark btn-block"><i class="fa fa-user-plus"></i> Add School</button>
+                    <button type="submit" class="btn btn-dark btn-block"><i class="fa fa-user-plus"></i> Register School</button>
                 </div>
             </form>
         </div>

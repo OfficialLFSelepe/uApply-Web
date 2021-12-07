@@ -16,7 +16,7 @@ namespace uApply.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var languages = unitOfWork.Language.GetAll(includeProperties: "User");
+            var languages = unitOfWork.Language.GetAll();
 
             return View(languages);
         }

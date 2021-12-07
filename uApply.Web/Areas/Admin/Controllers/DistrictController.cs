@@ -18,6 +18,9 @@ namespace uApply.Web.Areas.Admin.Controllers
         {
             var districts = unitOfWork.District.GetAll(includeProperties: "Province");
 
+            ViewBag.JavaScriptFunction = string.Format($"setLoggedUser('{-1}', 'MANAGER', 'admin', '');");
+
+
             return View(districts);
         }
 

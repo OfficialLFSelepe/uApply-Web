@@ -140,7 +140,7 @@ namespace uApply.Web.Areas.User.Controllers
 
             parentVM.Parent = parentFromDb;
 
-            ViewBag.JavaScriptFunction = string.Format($"setLoggedUser('{parentFromDb.Id}', 'PARENT');");
+            ViewBag.JavaScriptFunction = string.Format($"setLoggedUser('{parentFromDb.Id}', 'PARENT', '{parentFromDb.FullNames.Split(' ')[0]}', '/User/Parent/Profile/{parentFromDb.Id}');");
 
             var learners = unitOfWork.Learner.GetAll(l => l.ParentId == parentFromDb.Id);
 

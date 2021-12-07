@@ -26,6 +26,16 @@
                           <i class="icon ion-md-home mr-2"></i>Home
                         </a>
                     </li>
+                    <li id="districtLink" style="display: none">
+                        <a class="nav-link text-white nav-link-hover mr-2" asp-area="Admin" asp-controller="District" asp-action="Index">
+                          <i class="icon ion-md-business mr-2"></i>Districts                        
+                        </a>
+                    </li>
+                    <li id="townsLink" style="display: none">
+                        <a class="nav-link text-white nav-link-hover mr-2" asp-area="Admin" asp-controller="Town" asp-action="Index">
+                          <i class="icon ion-md-business mr-2"></i> Towns
+                        </a>
+                    </li>   
                     <li id="parentsLink" style="display: none">
                         <a class="nav-link text-white nav-link-hover mr-2" asp-area="User" asp-controller="Parent" asp-action="Index">
                           <i class="icon ion-md-people mr-2"></i>  Parents
@@ -47,7 +57,7 @@
                           <i class="icon ion-md-book mr-2"></i>Register
                         </a>
                     </li>
-                    <li id="loggedUser" style="display: none">
+                    <li id="loggedUser" style="display: none; cursor: pointer;">
                         <a class="nav-link text-white">
                           <i class="icon ion-md-person mr-2"></i> <span>Username</span>
                         </a>

@@ -17,13 +17,20 @@ console.log("hello world")
         //hide register
         document.getElementById('registerLink').style.display = "none";
         document.getElementById('loginLink').style.display = "none";
-        //login 
 
-        //add logout 
-        //show loged user
+        //show logged
         document.getElementById('loggedUser').style.display = "block";
         document.getElementById('logout').style.display = "block";
-        document.querySelector('#loggedUser span').innerHTML = loggerUser.role;
+        document.querySelector('#loggedUser span').innerHTML = loggerUser.username + `(${loggerUser.role})`;
+        document.querySelector('#loggedUser a').setAttribute("href", loggerUser.profile);
+
+
+        if (loggerUser.userId == -1) {
+            document.getElementById('districtLink').style.display = "block";
+            document.getElementById('townsLink').style.display = "block";
+
+        }
+
 
 
     }

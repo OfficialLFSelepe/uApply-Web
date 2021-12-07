@@ -112,11 +112,13 @@ else
 @if (ViewBag.JavaScriptFunction != null)
 {
     <script type="text/javascript">
-        function setLoggedUser(userId, role){
+        function setLoggedUser(userId, role, username, profile){
 
             var user = {
                 userId: userId,
-                role: role
+                role: role,
+                username: username,
+                profile: profile 
             }
 
             localStorage.setItem("loggedUser", JSON.stringify(user));

@@ -20,7 +20,8 @@
                         <div class="col">
                             <div class="form-group">
                                 <label asp-for="Parent.FullNames" class="text-muted"></label>
-                                <input  asp-for="Parent.FullNames" type="text" class="form-control" />     
+                                <input  asp-for="Parent.FullNames" type="text" class="form-control" />  
+                                <span asp-validation-for="Parent.FullNames" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -30,6 +31,7 @@
                             <div class="form-group">
                                 <label asp-for="Parent.Surname" class="text-muted"></label>
                                 <input asp-for="Parent.Surname" type="text" class="form-control" />
+                                <span asp-validation-for="Parent.Surname" class="text-danger"></span>
                             </div>
                         </div>
                     </div>                   
@@ -39,7 +41,7 @@
                                 <label asp-for="Parent.Title" class="text-muted"></label>
                                   @Html.DropDownListFor( c => c.Parent.TitleId, Model.Titles, "-- Select Title --",
                                     new {@class = "form-control"})
-                                
+                                     <span asp-validation-for="Parent.TitleId" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -50,6 +52,7 @@
                                 <label asp-for="Parent.Gender" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.Parent.GenderId, Model.Genders, "-- Select Gender --",
                                     new {@class = "form-control"})
+                                     <span asp-validation-for="Parent.GenderId" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col">
@@ -57,7 +60,7 @@
                                 <label asp-for="Parent.Nationality" class="text-muted"></label>                                
                                 @Html.DropDownListFor( c => c.Parent.NationalityId, Model.Nationalities, "-- Select Nationality --",
                                     new {@class = "form-control"})
-
+                                 <span asp-validation-for="Parent.NationalityId" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -68,7 +71,8 @@
                         <div class="col">
                             <div class="form-group">
                                 <label asp-for="Parent.IdNumber" class="text-muted"></label>
-                                <input asp-for="Parent.IdNumber" type="text" class="form-control" />        
+                                <input asp-for="Parent.IdNumber" type="text" class="form-control" />    
+                                 <span asp-validation-for="Parent.IdNumber" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-3">
@@ -76,7 +80,7 @@
                                 <label asp-for="Parent.Race" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.Parent.RaceId, Model.Races, "-- Select Race --",
                                     new {@class = "form-control"})
-                                
+                                 <span asp-validation-for="Parent.RaceId" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -91,7 +95,7 @@
                                 <label asp-for="Parent.Race" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.Parent.LanguageId, Model.Languages, "-- Select Home Language --",
                                     new {@class = "form-control"})
-        
+                                     <span asp-validation-for="Parent.LanguageId" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -186,6 +190,7 @@
                             <div class="form-group">
                                 <label asp-for="Parent.Email" class="text-muted"></label>
                                 <input asp-for="Parent.Email" type="text" class="form-control" />
+                                 <span asp-validation-for="Parent.Email" class="text-danger"></span>
                             </div>
                         </div>
                         @*<div class="col">
@@ -202,6 +207,7 @@
                             <div class="form-group">
                                 <label asp-for="Parent.PhoneNumber" class="text-muted"></label>
                                 <input asp-for="Parent.PhoneNumber" type="text" class="form-control" />
+                                 <span asp-validation-for="Parent.PhoneNumber" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -211,6 +217,7 @@
                             <div class="form-group">
                                 <label asp-for="Parent.Password" class="text-muted"></label>
                                 <input asp-for="Parent.Password" type="text" class="form-control" />
+                                 <span asp-validation-for="Parent.Password" class="text-danger"></span>
                             </div>
                         </div>
                         @*<div class="col">
@@ -231,3 +238,6 @@
         
     </div>
 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

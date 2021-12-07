@@ -37,7 +37,6 @@
                                 <label asp-for="Learner.Surname" class="text-muted"></label>
                                 <input asp-for="Learner.Surname" type="text" class="form-control" />
                                 <span asp-validation-for="Learner.Surname" class="text-danger"></span>
-
                             </div>
                         </div>
                     </div>                   
@@ -47,7 +46,7 @@
                                 <label asp-for="Learner.Title" class="text-muted"></label>
                                   @Html.DropDownListFor( c => c.Learner.TitleId, Model.Titles, "-- Select Title --",
                                     new {@class = "form-control"})
-                                
+                                <span asp-validation-for="Learner.TitleId" class="text-danger"></span>                                
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -58,6 +57,7 @@
                                 <label asp-for="Learner.Gender" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.Learner.GenderId, Model.Genders, "-- Select Gender --",
                                     new {@class = "form-control"})
+                                    <span asp-validation-for="Learner.GenderId" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col">
@@ -65,7 +65,7 @@
                                 <label asp-for="Learner.Nationality" class="text-muted"></label>                                
                                 @Html.DropDownListFor( c => c.Learner.NationalityId, Model.Nationalities, "-- Select Nationality --",
                                     new {@class = "form-control"})
-
+                                <span asp-validation-for="Learner.NationalityId" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -76,7 +76,9 @@
                         <div class="col">
                             <div class="form-group">
                                 <label asp-for="Learner.IdNumber" class="text-muted"></label>
-                                <input asp-for="Learner.IdNumber" type="text" class="form-control" />        
+                                <input asp-for="Learner.IdNumber" type="text" class="form-control" />   
+                                <span asp-validation-for="Learner.IdNumber" class="text-danger"></span>                                
+                                
                             </div>
                         </div>
                         <div class="col-4">
@@ -85,7 +87,7 @@
                                 
                                 @Html.DropDownListFor( c => c.Learner.LanguageId, Model.Languages, "-- Select Home Language --",
                                     new {@class = "form-control"})
-        
+                                <span asp-validation-for="Learner.LanguageId" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-3">
@@ -93,7 +95,7 @@
                                 <label asp-for="Learner.Race" class="text-muted"></label>
                                 @Html.DropDownListFor( c => c.Learner.RaceId, Model.Races, "-- Select Race --",
                                     new {@class = "form-control"})
-                                
+                                <span asp-validation-for="Learner.RaceId" class="text-danger"></span>
                             </div>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
@@ -144,6 +146,7 @@
         
                                 <label asp-for="Learner.StreetAddress" class="text-muted"><strong>Street</strong></label>
                                 <input asp-for="Learner.StreetAddress" type="text" class="form-control mb-3"/>
+                                 <span asp-validation-for="Learner.StreetAddress" class="text-danger"></span>
                                 
                             </div>
                     
@@ -153,6 +156,7 @@
                                <div class="form-group">
                                 <label asp-for="Learner.Surburb" class="text-muted"><strong>Suburb</strong></label>
                                 <input asp-for="Learner.Surburb" type="text" class="form-control mb-3"/>
+                                <span asp-validation-for="Learner.Surburb" class="text-danger"></span>
                             </div>
                             </div>
                         </div>
@@ -170,13 +174,15 @@
                           <div class="col-4">
                             <label asp-for="Learner.Town" class="text-muted"></label>
                             @Html.DropDownListFor( c => c.Learner.TownId, Model.Towns, "-- Select Town --",
-                                    new {@class = "form-control"})   
+                                    new {@class = "form-control"})  
+                                    <span asp-validation-for="Learner.TownId" class="text-danger"></span><span asp-validation-for="Learner.GenderId" class="text-danger"></span>
                         </div>
                      
                         <div class="col-4">
                             <div class="form-group">
                                 <label asp-for="Learner.PostalCode" class="text-muted"><strong>Postal Code</strong></label>
                                 <input asp-for="Learner.PostalCode" type="text" class="form-control"/>
+                                <span asp-validation-for="Learner.PostalCode" class="text-danger"></span>
                             </div>    
                         </div>
                         
@@ -200,6 +206,7 @@
                             <div class="form-group">
                                 <label asp-for="Learner.PhoneNumber" class="text-muted"></label>
                                 <input asp-for="Learner.PhoneNumber" type="text" class="form-control" />
+                                <span asp-validation-for="Learner.PhoneNumber" class="text-danger"></span>
                             </div>
                         </div>
                         @*<div class="col">

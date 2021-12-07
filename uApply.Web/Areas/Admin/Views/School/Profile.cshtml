@@ -36,7 +36,7 @@
 
         <div class="card shadow p-3 bg-dark text-warning d-flex align-items-center justify-content-center">
             <p class="font-weight-bold m-0"> <i class="icon ion-md-document mr-2"></i> Not Attended</p>
-            <p class="font-weight-bold mt-1">@(applications != null ? applications.Where(s => s.StatusId == 1).ToList().Count : 0 )</p>
+            <p class="font-weight-bold mt-1">@(applications != null ? applications.Where(s => s.StatusId == 2).ToList().Count : 0 )</p>
         </div>
 
     </div>
@@ -82,7 +82,7 @@
                         <td>@application.Id</td>
                         <td>@application.Learner.FullNames @application.Learner.Surname</td>                        
                         <td>@application.Grade.Name</td>                        
-                        <td>@application.Status</td>                        
+                        <td>@application.Status.Name</td>                        
                         <td>@application.Created.ToString()</td>                        
                         
                        <td class="d-flex justify-content-center">

@@ -123,7 +123,7 @@ namespace uApply.Web.Areas.Admin.Controllers
 
             ViewBag.JavaScriptFunction = string.Format($"setLoggedUser('{schoolFromDb.Id}', 'SCHOOL', '{schoolFromDb.Name.Split(' ')[0]}', '/Admin/School/Profile/{schoolFromDb.Id}');");
 
-            var applications = unitOfWork.SchoolApplication.GetAll(a => a.SchoolId == id, includeProperties: "Learner,Grade");
+            var applications = unitOfWork.SchoolApplication.GetAll(a => a.SchoolId == id, includeProperties: "Learner,Grade,Status");
 
             if (!applications.Any()) return View(schoolVM);
 

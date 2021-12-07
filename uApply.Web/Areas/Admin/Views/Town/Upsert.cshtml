@@ -1,8 +1,7 @@
-﻿@model uApply.Data.Models.Location.Town
-
+﻿@model uApply.Utils.ViewModels.TownViewModel
 @{
 
-    var title = Model.Id == 0 ? "Add" : "Update";
+    var title = Model.Town.Id == 0 ? "Add" : "Update";
 }
 
 <div class="card shadow m-5">
@@ -12,12 +11,26 @@
     </div>
     <div class="card-body">
         <form method="post">
+
+            <input hidden asp-for="Town.Id" />
+
             <div class="form-row mb-3">                    
                 <div class="col-5">
-                     <label asp-for="Name" class="text-muted"></label>
+                    <label asp-for="Town.Name" class="text-muted"></label>
                 </div>
                  <div class="col-7">
-                    <input asp-for="Name" type="text" class="form-control" />
+                    <input asp-for="Town.Name" type="text" class="form-control" />
+                </div>
+
+            </div>
+        
+            <div class="form-row mb-3">                    
+                <div class="col-5">
+                    <label asp-for="District" class="text-muted"></label>
+                </div>
+                 <div class="col-7">
+                    @Html.DropDownListFor( c => c.District.Id, Model.Districts, "-- Select District --",
+                                    new {@class = "form-control"})
                 </div>
 
             </div>

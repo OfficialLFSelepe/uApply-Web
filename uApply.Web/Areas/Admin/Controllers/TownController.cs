@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 using uApply.DAL.Repository.IRepository;
 using uApply.Data.Models.Location;
+using uApply.Utils.ViewModels;
 
 namespace uApply.Web.Areas.Admin.Controllers
 {
@@ -23,45 +26,53 @@ namespace uApply.Web.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            Town town = new Town();
 
-            if (id == null) return View(town);
+            TownViewModel townViewModel = new TownViewModel()
+            {
+                Town = new Town(),
+                Districts = unitOfWork.District.GetAll().Select(g => new SelectListItem
+                {
+                    Text = g.Name,
+                    Value = g.Id.ToString()
+                })
+            };
 
-            town = unitOfWork.Town.Get(id.GetValueOrDefault());
+            if (id == null) return View(townViewModel);
 
-            if (town == null) return NotFound();
+            townViewModel.Town = unitOfWork.Town.Get(id.GetValueOrDefault());
+            townViewModel.District = unitOfWork.District.GetAll( d => d.Id == id.GetValueOrDefault()).FirstOrDefault();
 
-            return View(town);
+            
+            return View(townViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Town town)
+        public IActionResult Upsert(TownViewModel townViewModel)
         {
             if (ModelState.IsValid)
             {
 
-                if (town.Id != 0)
+               
+                if (townViewModel.Town.Id == 0)
                 {
-                    var objFromDb = unitOfWork.Town.Get(town.Id);
-                }
-
-
-                if (town.Id == 0)
-                {
-                    town.DistrictId = 1; 
-                    unitOfWork.Town.Add(town);
+                    townViewModel.Town.DistrictId = townViewModel.District.Id; 
+                    unitOfWork.Town.Add(townViewModel.Town);
                 }
                 else
                 {
-                    town.DistrictId = 1; 
-                    unitOfWork.Town.Update(town);
+                    townViewModel.Town.DistrictId = townViewModel.District.Id;
+                    unitOfWork.Town.Update(townViewModel.Town);
                 }
                 unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
 
-            return View(town);
+            }
+
+            return View(townViewModel);
         }
 
         [HttpGet]
